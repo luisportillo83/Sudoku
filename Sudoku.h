@@ -3,7 +3,7 @@
 
 class Sudoku {
 public:
-	//Sudoku(View * view, Logic * logic);
+	//Sudoku (View * view, Logic * logic);
 	Sudoku();
 	void play();
 };
