@@ -4,6 +4,7 @@
 namespace models {
 
 class Cell {
+public:
 
 protected:
 	unsigned int value;

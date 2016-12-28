@@ -2,6 +2,7 @@
 #define BOARD_H_
 
 #include "Region.h"
+#include "Cell.h"
 
 namespace models {
 
@@ -10,8 +11,10 @@ public:
 	Board();
 
 	static const unsigned int NUMBER_OF_REGIONS;
+	static const unsigned int NUMBER_OF_CELLS;
 private:
-	Region * regions;
+	// TODO - Is this needed? - Region * regions;
+	Cell * cells;
 };
 
 }
