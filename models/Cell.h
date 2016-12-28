@@ -5,6 +5,10 @@ namespace models {
 
 class Cell {
 public:
+	void setValue(unsigned int value);
+	unsigned int getValue();
+
+	static const unsigned int CELL_MAX_VALUE;
 
 protected:
 	unsigned int value;
