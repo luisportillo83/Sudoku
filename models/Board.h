@@ -19,11 +19,14 @@ public:
 
 private:
 	// TODO - Is this needed? - Region * regions;
-	Cell * cells;
+	std::vector<Cell> cells;
 
 	bool isRowCompleted(unsigned int row);
 	bool isColumnCompleted(unsigned int column);
 	bool isRegionCompleted(unsigned int region);
+
+	// TODO Move this to util?
+	bool hasAllNumbers(std::vector<Cell> cells);
 };
 
 }
