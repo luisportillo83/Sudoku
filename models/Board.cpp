@@ -25,9 +25,24 @@ void Board::setValue(unsigned int row, unsigned int column, unsigned int value) 
 }
 
 bool Board::isCompleted() {
-	// Check columns
-	// Check rows
-	// Check regions
+	for (unsigned int i = 0; i < Board::NUMBER_OF_ROWS; i++) {
+		if (!isRowCompleted(i)) {
+			return false;
+		}
+	}
+
+	for (unsigned int i = 0; i < Board::NUMBER_OF_COLUMNS; i++) {
+		if (!isColumnCompleted(i)) {
+			return false;
+		}
+	}
+
+	for (unsigned int i = 0; i < Board::NUMBER_OF_REGIONS; i++) {
+		if (!isRegionCompleted(i)) {
+			return false;
+		}
+	}
+
 	return true;
 }
 
