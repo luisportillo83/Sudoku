@@ -20,9 +20,11 @@ void Sudoku::play() {
 	std::cout << "Sudoku!" << std::endl;
 }
 
+/*
 int main(void) {
 	std::srand(unsigned(std::time(0)));
 	//(new Sudoku(new views::ConsoleView(), new Logic()))->play();
 	(new Sudoku())->play();
 	return 0;
 }
+*/

@@ -47,13 +47,22 @@ bool Board::isCompleted() {
 }
 
 bool Board::isRowCompleted(unsigned int row) {
-	// TODO
-	return true;
+	std::vector<Cell *> rowToCheck;
+
+	for (unsigned int i = 0; i < Board::NUMBER_OF_ROWS; i++) {
+		rowToCheck.push_back(cells.at((row * Board::NUMBER_OF_ROWS) + i));
+	}
+
+	return hasAllNumbers(rowToCheck);
 }
 
 bool Board::isColumnCompleted(unsigned int column) {
-	// TODO
-	return true;
+	std::vector<Cell *> columnToCheck;
+
+	for (unsigned int i = 0; i < Board::NUMBER_OF_ROWS; i++) {
+		columnToCheck.push_back(cells.at(column));
+	}
+	return hasAllNumbers(columnToCheck);
 }
 
 bool Board::isRegionCompleted(unsigned int region) {
@@ -64,8 +73,10 @@ bool Board::isRegionCompleted(unsigned int region) {
 
 bool Board::hasAllNumbers(std::vector<Cell *> cells) {
 	assert(cells.size() == Board::NUMBER_OF_ROWS);
-	for (Cell * cell: cells) {
-		assert(cell->getValue() != Cell::CELL_NO_VALUE);
+	for (unsigned int i = 0; i < cells.size(); i++) {
+		if (cells.at(i)->getValue() != Cell::CELL_NO_VALUE) {
+			return false;
+		}
 	}
 	std::sort(cells.begin(), cells.end());
 	for (unsigned int i = 0; i < cells.size(); i++) {
