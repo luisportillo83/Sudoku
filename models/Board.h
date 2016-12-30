@@ -18,7 +18,6 @@ public:
 	static const unsigned int NUMBER_OF_CELLS;
 
 private:
-	// TODO - Is this needed? - Region * regions;
 	std::vector<Cell *> cells;
 
 	bool isRowCompleted(unsigned int row);

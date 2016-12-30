@@ -9,8 +9,9 @@ namespace models {
 class Region {
 public:
 	Region();
-
-	static const unsigned int NUMBER_OF_CELLS;
+	Region(std::vector<Cell *> cells);
+	void addCells(std::vector<Cell *> cells);
+	bool isCompleted();
 protected:
 	std::vector<Cell *> cells;
 };
