@@ -2,9 +2,12 @@
 #include <ctime>
 #include <cstdlib>
 #include "Sudoku.h"
+#include "views/graphical/GraphicalView.h"
 
-Sudoku::Sudoku() {
-	// TODO
+
+Sudoku::Sudoku(View * view, Logic * logic) {
+	this->logic = logic;
+	this->view = view;
 }
 
 void Sudoku::play() {
@@ -20,11 +23,8 @@ void Sudoku::play() {
 	std::cout << "Sudoku!" << std::endl;
 }
 
-/*
 int main(void) {
 	std::srand(unsigned(std::time(0)));
-	//(new Sudoku(new views::ConsoleView(), new Logic()))->play();
-	(new Sudoku())->play();
+	(new Sudoku(new views::GraphicalView(), new Logic()))->play();
 	return 0;
 }
-*/
