@@ -2,39 +2,58 @@
 
 namespace utils {
 
-int WinMain::createWindow(WinMainParameters * winMainParameters) {
-	const char g_szClassName[] = "SudokuClass";
-	WNDCLASSEX wc;
+const char WinMain::CLASS_NAME[] = "SudokuClass";
+const char WinMain::WINDOW_TITLE[] = "Sukodu";
 
-	wc.cbSize        = sizeof(WNDCLASSEX);
-	wc.style         = 0;
-	//TODO wc.lpfnWndProc   = WndProc;
-	wc.cbClsExtra    = 0;
-	wc.cbWndExtra    = 0;
-	wc.hInstance     = winMainParameters->getCurrentInstance();
-	wc.hIcon         = LoadIcon(NULL, MAKEINTRESOURCE(IDI_ICON1));
-	wc.hCursor       = LoadCursor(NULL, IDC_ARROW);
-	wc.hbrBackground = (HBRUSH)(COLOR_WINDOW+2);
-	wc.lpszMenuName  = MAKEINTRESOURCE(IDR_MENU1);
-	wc.lpszClassName = g_szClassName;
-	wc.hIconSm       = LoadIcon(winMainParameters->getCurrentInstance(), MAKEINTRESOURCE(IDI_ICON1));
+WinMain::WinMain(WinMainParameters * winMainParameters) {
+	this->winMainParameters = winMainParameters;
+	this->windowHandler = NULL;
+}
 
-	if (!RegisterClassEx(&wc)) {
+bool WinMain::registerWindow(WNDPROC windowProc) {
+	WNDCLASSEX windowClass;
+
+	windowClass.cbSize        = sizeof(WNDCLASSEX);
+	windowClass.style         = 0;
+	windowClass.lpfnWndProc   = windowProc;
+	windowClass.cbClsExtra    = 0;
+	windowClass.cbWndExtra    = 0;
+	windowClass.hInstance     = winMainParameters->getCurrentInstance();
+	windowClass.hIcon         = LoadIcon(NULL, MAKEINTRESOURCE(IDI_ICON1));
+	windowClass.hCursor       = LoadCursor(NULL, IDC_ARROW);
+	windowClass.hbrBackground = (HBRUSH)(COLOR_WINDOW + 2);
+	windowClass.lpszMenuName  = MAKEINTRESOURCE(IDR_MENU1);
+	windowClass.lpszClassName = WinMain::CLASS_NAME;
+	windowClass.hIconSm       = LoadIcon(winMainParameters->getCurrentInstance(), MAKEINTRESOURCE(IDI_ICON1));
+
+	if (!RegisterClassEx(&windowClass)) {
 		MessageBox(NULL, "Window Registration Failed!", "Error!", MB_ICONEXCLAMATION | MB_OK);
-		return 0;
+		return false;
 	}
+	return true;
+}
 
-	HWND hwnd = CreateWindowEx(WS_EX_CLIENTEDGE, g_szClassName, "Sudoku", WS_OVERLAPPEDWINDOW, CW_USEDEFAULT,
-			CW_USEDEFAULT, 330, 400,	NULL, NULL, winMainParameters->getCurrentInstance(), NULL);
+bool WinMain::createWindow() {
+	windowHandler = CreateWindowEx(WS_EX_CLIENTEDGE, WinMain::CLASS_NAME, WinMain::WINDOW_TITLE, WS_OVERLAPPEDWINDOW,
+			CW_USEDEFAULT, CW_USEDEFAULT, 330, 400,	NULL, NULL, winMainParameters->getCurrentInstance(), NULL);
 
-	if (!hwnd) {
+	if (!windowHandler) {
 		MessageBox(NULL, "Window Creation Failed!", "Error!", MB_ICONEXCLAMATION | MB_OK);
-		return 0;
+		return false;
 	}
+	return true;
+}
 
-	ShowWindow(hwnd, winMainParameters->getCmdShow());
-	UpdateWindow(hwnd);
+void WinMain::showWindow() {
+	ShowWindow(windowHandler, winMainParameters->getCmdShow());
+}
 
+void WinMain::updateWindow() {
+	UpdateWindow(windowHandler);
+}
+
+
+/* TODO :::
 	MSG Msg;
 	while (GetMessage(&Msg, NULL, 0, 0) > 0) {
 		TranslateMessage(&Msg);
@@ -42,6 +61,6 @@ int WinMain::createWindow(WinMainParameters * winMainParameters) {
 	}
 
 	return Msg.wParam;
-}
+*/
 
 }

@@ -21,10 +21,10 @@ void Sudoku::play() {
 	} while (controller != NULL);
 }
 
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
-{
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow) {
 	MSG message;
 	std::srand(unsigned(std::time(0)));
-	(new Sudoku(new views::GraphicalView(new utils::WinMainParameters(hInstance, hPrevInstance, lpCmdLine, nCmdShow)), new Logic()))->play();
+	utils::WinMainParameters * winMainParameters = new utils::WinMainParameters(hInstance, hPrevInstance, lpCmdLine, nCmdShow);
+	(new Sudoku(new views::GraphicalView(winMainParameters), new Logic()))->play();
 	return message.wParam;
 }
