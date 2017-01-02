@@ -1,7 +1,7 @@
 #ifndef BOARD_H_
 #define BOARD_H_
 
-#include "Region.h"
+#include <vector>
 #include "Cell.h"
 
 namespace models {

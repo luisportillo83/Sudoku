@@ -63,9 +63,13 @@ bool Board::isColumnCompleted(unsigned int column) {
 }
 
 bool Board::isRegionCompleted(unsigned int region) {
-	// TODO
-	// Construir una region y luego llamar a isCompleted() de la region ???
-	return true;
+	std::vector<Cell *> regionToCheck;
+
+	for (unsigned int i = 0; i < Board::NUMBER_OF_ROWS; i++) {
+
+		regionToCheck.push_back(cells.at(region));
+	}
+	return hasAllNumbers(regionToCheck);
 }
 
 bool Board::hasAllNumbers(std::vector<Cell *> cells) {
