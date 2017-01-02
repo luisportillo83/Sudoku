@@ -1,9 +1,8 @@
 #include <iostream>
+#include <windows.h>
 #include <ctime>
-#include <cstdlib>
 #include "Sudoku.h"
 #include "views/graphical/GraphicalView.h"
-
 
 Sudoku::Sudoku(View * view, Logic * logic) {
 	this->logic = logic;
@@ -11,20 +10,21 @@ Sudoku::Sudoku(View * view, Logic * logic) {
 }
 
 void Sudoku::play() {
-	/*
 	controllers::OperationController * controller;
 	do {
 		controller = logic->getOperationController();
 		if (controller != NULL) {
-			view->interact(controller);
+			std::cout << "Sudoku!" << std::endl;
+			controller = NULL;
+			//view->interact(controller);
 		}
 	} while (controller != NULL);
-	*/
-	std::cout << "Sudoku!" << std::endl;
 }
 
-int main(void) {
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
+{
+	MSG message;
 	std::srand(unsigned(std::time(0)));
 	(new Sudoku(new views::GraphicalView(), new Logic()))->play();
-	return 0;
+	return message.wParam;
 }
