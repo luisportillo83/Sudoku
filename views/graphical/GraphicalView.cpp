@@ -4,6 +4,7 @@
 namespace views {
 
 GraphicalView::GraphicalView(utils::WinMainParameters * winMainParameters) {
+	this->winMainParameters = winMainParameters;
 	views::BoardView * boardView = new views::BoardView();
 	gameView = new views::GameView(boardView);
 	startView = new views::StartView();
@@ -12,7 +13,6 @@ GraphicalView::GraphicalView(utils::WinMainParameters * winMainParameters) {
 	continueView = new views::ContinueView();
 	saveView = new views::SaveView(boardView);
 	abandonView = new views::AbandonView();
-	this->winMainParameters = winMainParameters;
 }
 
 void GraphicalView::interact(controllers::OperationController * operationController) {

@@ -8,6 +8,7 @@
 #include "models/Cell.h"
 #include "models/Region.h"
 
+/*
 int mainXXX(void) {
 	std::srand(unsigned(std::time(0)));
 
@@ -101,3 +102,4 @@ int WINAPI WinMainXXX(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdL
 	}
 	return Msg.wParam;
 }
+*/

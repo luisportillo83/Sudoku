@@ -24,6 +24,12 @@ void Board::setValue(unsigned int row, unsigned int column, unsigned int value) 
 	cells[(row * Board::NUMBER_OF_COLUMNS) + column]->setValue(value);
 }
 
+unsigned int Board::getValue(unsigned int row, unsigned int column) {
+	assert(row <= Board::NUMBER_OF_ROWS);
+	assert(column <= Board::NUMBER_OF_COLUMNS);
+	return cells[(row * Board::NUMBER_OF_COLUMNS) + column]->getValue();
+}
+
 bool Board::isCompleted() {
 	for (unsigned int i = 0; i < Board::NUMBER_OF_ROWS; i++) {
 		if (!isRowCompleted(i)) {

@@ -10,6 +10,7 @@ class Board {
 public:
 	Board();
 	void setValue(unsigned int row, unsigned int column, unsigned int value);
+	unsigned int getValue(unsigned int row, unsigned int column);
 	bool isCompleted();
 
 	static const unsigned int NUMBER_OF_REGIONS;
