@@ -10,6 +10,9 @@
 #define ID_FILE_EXIT                    40002
 #define ID_HELP_ABOUT                   40003
 
+#define hE1 123
+#define hS 124
+
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
 #define _APS_NEXT_RESOURCE_VALUE        103

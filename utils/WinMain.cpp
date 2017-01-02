@@ -18,12 +18,16 @@ WinMain * WinMain::instance() {
 	return WinMain::winMain;
 }
 
+LRESULT CALLBACK WndProc(HWND windowHandler, UINT msg, WPARAM wParam, LPARAM lParam) {
+	return msg;
+}
+
 bool WinMain::registerWindow(WinMainParameters * winMainParameters, WNDPROC windowProc) {
 	WNDCLASSEX windowClass;
 
 	windowClass.cbSize        = sizeof(WNDCLASSEX);
 	windowClass.style         = 0;
-	windowClass.lpfnWndProc   = windowProc;
+	windowClass.lpfnWndProc   = WndProc;
 	windowClass.cbClsExtra    = 0;
 	windowClass.cbWndExtra    = 0;
 	windowClass.hInstance     = winMainParameters->getCurrentInstance();

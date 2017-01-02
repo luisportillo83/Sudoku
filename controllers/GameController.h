@@ -7,13 +7,14 @@
 namespace controllers {
 
 class GameController {
-protected:
-	models::Game * game;
 public:
 	GameController(models::Game * game);
 	models::State::StateValues getState();
 	void setState(models::State::StateValues newState);
 	bool isGameFinished();
+protected:
+	models::Game * game;
+
 };
 
 }

@@ -8,7 +8,6 @@ StartView::StartView(utils::WinMainParameters * winMainParameters) {
 }
 
 void StartView::interact(controllers::StartController * startController) {
-	// TODO, poner WNDPROC en el controller?
 	WNDPROC windowProc;
 	assert(utils::WinMain::instance()->registerWindow(winMainParameters, windowProc));
 	assert(utils::WinMain::instance()->createWindow());
