@@ -18,12 +18,14 @@
 #include "../../controllers/SaveController.h"
 #include "../../controllers/AbandonController.h"
 #include "../../View.h"
+#include "../../utils/WinMainParameters.h"
 
 namespace views {
 
 class GraphicalView: public View {
 public:
 	GraphicalView();
+	GraphicalView(utils::WinMainParameters * winMainParameters);
 	void interact(controllers::OperationController * operationController);
 	void visit(controllers::StartController * startController);
 	void visit(controllers::NewController * newController);
@@ -34,6 +36,7 @@ public:
 	void visit(controllers::AbandonController * abandonController);
 
 private:
+	utils::WinMainParameters * winMainParameters;
 	StartView * startView;
 	GameView * gameView;
 	NewView * newView;

@@ -25,6 +25,6 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine
 {
 	MSG message;
 	std::srand(unsigned(std::time(0)));
-	(new Sudoku(new views::GraphicalView(), new Logic()))->play();
+	(new Sudoku(new views::GraphicalView(new utils::WinMainParameters(hInstance, hPrevInstance, lpCmdLine, nCmdShow)), new Logic()))->play();
 	return message.wParam;
 }

@@ -3,11 +3,20 @@
 
 #include <windows.h>
 
-namespace util {
+namespace utils {
 
 class WinMainParameters {
 public:
 	WinMainParameters(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow);
+	HINSTANCE getCurrentInstance();
+	HINSTANCE getPrevInstance();
+	LPSTR getCmdLine();
+	int getCmdShow();
+protected:
+	HINSTANCE hInstance;
+	HINSTANCE hPrevInstance;
+	LPSTR lpCmdLine;
+	int nCmdShow;
 };
 
 }
