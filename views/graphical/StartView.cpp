@@ -1,3 +1,4 @@
+#include <cassert>
 #include "StartView.h"
 
 namespace views {
@@ -7,10 +8,14 @@ StartView::StartView(utils::WinMainParameters * winMainParameters) {
 }
 
 void StartView::interact(controllers::StartController * startController) {
+	// TODO, poner WNDPROC en el controller?
+	WNDPROC windowProc;
+	assert(utils::WinMain::instance()->registerWindow(winMainParameters, windowProc));
+	assert(utils::WinMain::instance()->createWindow());
 
-
-
-
+	utils::WinMain::instance()->showWindow();
+	utils::WinMain::instance()->updateWindow();
+}
 
 	/*
 	std::vector<char> opcionesPartidaNuevaORecuperar = {'n', 'r'};
@@ -22,6 +27,4 @@ void StartView::interact(controllers::StartController * startController) {
 		startController->loadGame();
 	}
 	*/
-}
-
 }

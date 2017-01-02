@@ -60,8 +60,7 @@ void WinMain::updateWindow() {
 	UpdateWindow(windowHandler);
 }
 
-
-/* TODO :::
+/* TODO
 	MSG Msg;
 	while (GetMessage(&Msg, NULL, 0, 0) > 0) {
 		TranslateMessage(&Msg);
