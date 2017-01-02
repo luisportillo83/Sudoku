@@ -2,10 +2,12 @@
 
 namespace views {
 
-StartView::StartView() {
+StartView::StartView(utils::WinMainParameters * winMainParameters) {
+	this->winMainParameters = winMainParameters;
 }
 
 void StartView::interact(controllers::StartController * startController) {
+
 
 
 

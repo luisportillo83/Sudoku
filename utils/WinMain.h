@@ -23,8 +23,8 @@ namespace utils {
 
 class WinMain {
 public:
-	WinMain(WinMainParameters * winMainParameters);
-	bool registerWindow(WNDPROC windowProc);
+	static WinMain* instance();
+	bool registerWindow(WinMainParameters * winMainParameters, WNDPROC windowProc);
 	bool createWindow();
 	void showWindow();
 	void updateWindow();
@@ -32,6 +32,8 @@ public:
 	static const char CLASS_NAME[];
 	static const char WINDOW_TITLE[];
 private:
+	WinMain();
+	static WinMain* winMain;
 	WinMainParameters * winMainParameters;
 	HWND windowHandler;
 };

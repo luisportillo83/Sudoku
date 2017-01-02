@@ -5,12 +5,20 @@ namespace utils {
 const char WinMain::CLASS_NAME[] = "SudokuClass";
 const char WinMain::WINDOW_TITLE[] = "Sukodu";
 
-WinMain::WinMain(WinMainParameters * winMainParameters) {
-	this->winMainParameters = winMainParameters;
-	this->windowHandler = NULL;
+WinMain * WinMain::winMain;
+
+WinMain::WinMain() {
+
 }
 
-bool WinMain::registerWindow(WNDPROC windowProc) {
+WinMain * WinMain::instance() {
+	if (WinMain::winMain == NULL) {
+		WinMain::winMain = new WinMain();
+	}
+	return WinMain::winMain;
+}
+
+bool WinMain::registerWindow(WinMainParameters * winMainParameters, WNDPROC windowProc) {
 	WNDCLASSEX windowClass;
 
 	windowClass.cbSize        = sizeof(WNDCLASSEX);

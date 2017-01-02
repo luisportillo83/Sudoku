@@ -5,9 +5,9 @@ namespace views {
 
 GraphicalView::GraphicalView(utils::WinMainParameters * winMainParameters) {
 	this->winMainParameters = winMainParameters;
-	views::BoardView * boardView = new views::BoardView();
-	gameView = new views::GameView(boardView);
-	startView = new views::StartView();
+	views::BoardView * boardView = new views::BoardView(); // TODO es necesario?
+	gameView = new views::GameView(boardView); // TODO es necesario?
+	startView = new views::StartView(this->winMainParameters);
 	newView = new views::NewView(boardView);
 	loadView = new views::LoadView(boardView);
 	continueView = new views::ContinueView();

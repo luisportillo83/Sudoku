@@ -14,9 +14,9 @@ void Sudoku::play() {
 	do {
 		controller = logic->getOperationController();
 		if (controller != NULL) {
-			std::cout << "Sudoku!" << std::endl;
-			controller = NULL;
-			//view->interact(controller);
+			//std::cout << "Sudoku!" << std::endl;
+			//controller = NULL;
+			view->interact(controller);
 		}
 	} while (controller != NULL);
 }
