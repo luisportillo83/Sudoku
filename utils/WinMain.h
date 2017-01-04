@@ -31,6 +31,10 @@ public:
 	bool createWindow();
 	void showWindow();
 	void updateWindow();
+	LRESULT CALLBACK WndProc1(HWND windowHandler, UINT msg, WPARAM wParam, LPARAM lParam);
+	WNDPROC WndProc2(HWND windowHandler, UINT msg, WPARAM wParam, LPARAM lParam);
+	LRESULT WndProc3(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
+	static LRESULT CALLBACK WndProc4(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam);
 
 	static const char CLASS_NAME[];
 	static const char WINDOW_TITLE[];

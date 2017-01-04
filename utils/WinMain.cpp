@@ -18,8 +18,43 @@ WinMain * WinMain::instance() {
 	return WinMain::winMain;
 }
 
-LRESULT CALLBACK WndProc(HWND windowHandler, UINT msg, WPARAM wParam, LPARAM lParam) {
-	return msg;
+LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
+	switch(msg)
+	{
+	case WM_CREATE:
+		//initializeControls(hwnd);
+		break;
+	case WM_COMMAND:
+		switch(LOWORD(wParam))
+		{
+		case hS:
+			//startSolver();
+			break;
+		case ID_HELP_ABOUT:
+			MessageBox(hwnd,"Sudoku Solver\nby Teodor Merodiyski (c) 2013\n","About",MB_OK);
+			break;
+		case ID_FILE_CLEAR:
+			//clearCells();
+			break;
+		case ID_FILE_EXIT:
+			exit(0);
+			break;
+		}
+		break;
+	case WM_CLOSE:
+		DestroyWindow(hwnd);
+		break;
+	case WM_DESTROY:
+		PostQuitMessage(0);
+		break;
+	default:
+		return DefWindowProc(hwnd, msg, wParam, lParam);
+	}
+	return 0;
+}
+
+LRESULT CALLBACK WinMain::WndProc4(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam) {
+	return 1;
 }
 
 bool WinMain::registerWindow(WinMainParameters * winMainParameters, WNDPROC windowProc) {
@@ -27,7 +62,8 @@ bool WinMain::registerWindow(WinMainParameters * winMainParameters, WNDPROC wind
 
 	windowClass.cbSize        = sizeof(WNDCLASSEX);
 	windowClass.style         = 0;
-	windowClass.lpfnWndProc   = WndProc;
+	//windowClass.lpfnWndProc   = WinMain::WndProc4;
+	windowClass.lpfnWndProc   = windowProc;
 	windowClass.cbClsExtra    = 0;
 	windowClass.cbWndExtra    = 0;
 	windowClass.hInstance     = winMainParameters->getCurrentInstance();
@@ -70,7 +106,6 @@ void WinMain::updateWindow() {
 		TranslateMessage(&Msg);
 		DispatchMessage(&Msg);
 	}
-
 	return Msg.wParam;
 */
 
