@@ -10,18 +10,11 @@ HWND MainWnd::Create(HINSTANCE hinst, LPCTSTR clsname, LPCTSTR wndname, HWND par
 		DWORD dStyle, DWORD dXStyle, int x, int y, int width, int height) {
 	windowHandle = CreateWindowEx(dXStyle, clsname, wndname, dStyle, x, y, width, height,
 			parent, NULL, hinst, NULL);
-
-	if(windowHandle != NULL) {
-		return windowHandle;
-	}
-	return NULL;
+	return windowHandle;
 }
 
-BOOL MainWnd::Show(int dCmdShow) {
-	if(ShowWindow(windowHandle, dCmdShow) && UpdateWindow(windowHandle)) {
-		return TRUE;
-	}
-	return FALSE;
+bool MainWnd::Show(int dCmdShow) {
+	return (ShowWindow(windowHandle, dCmdShow) && UpdateWindow(windowHandle));
 }
 
 MainWnd::operator HWND() {

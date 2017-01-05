@@ -10,10 +10,9 @@
 #include "models/Cell.h"
 #include "models/Region.h"
 
-//---------------------------------------------------------------------------
-LRESULT CALLBACK MainWndProc(HWND hWnd, UINT Msg,
-                             WPARAM wParam, LPARAM lParam);
-//---------------------------------------------------------------------------
+
+LRESULT CALLBACK MainWndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam);
+
 INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInst,
 				   LPSTR lpCmdLine, int nCmdShow)
 {
@@ -32,8 +31,7 @@ INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInst,
 	Wnd.Show();
 
 	// Process the main window's messages
-	while( GetMessage(&Msg, NULL, 0, 0) )
-	{
+	while(GetMessage(&Msg, NULL, 0, 0)) {
 		TranslateMessage(&Msg);
 		DispatchMessage(&Msg);
 	}

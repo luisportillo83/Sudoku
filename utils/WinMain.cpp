@@ -62,7 +62,6 @@ bool WinMain::registerWindow(WinMainParameters * winMainParameters, WNDPROC wind
 
 	windowClass.cbSize        = sizeof(WNDCLASSEX);
 	windowClass.style         = 0;
-	//windowClass.lpfnWndProc   = WinMain::WndProc4;
 	windowClass.lpfnWndProc   = windowProc;
 	windowClass.cbClsExtra    = 0;
 	windowClass.cbWndExtra    = 0;
