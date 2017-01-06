@@ -9,10 +9,8 @@ namespace views {
 
 class StartView {
 public:
-	StartView(utils::WinMainParameters * winMainParameters);
+	StartView();
 	void interact(controllers::StartController * startController);
-private:
-	utils::WinMainParameters * winMainParameters;
 };
 
 }

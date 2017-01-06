@@ -6,10 +6,10 @@
 
 namespace utils {
 
-class WinAppp {
+class WinApp {
 public:
-	WinAppp(HINSTANCE hInst, char *ClasName, WNDPROC WndPrc, LPCTSTR MenuName = NULL);
-	void Register();
+	WinApp(HINSTANCE hInst, char *ClasName, WNDPROC WndPrc, LPCTSTR MenuName = NULL);
+	void registerApp();
 
 protected:
 	WNDCLASSEX windowClassEs;

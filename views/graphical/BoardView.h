@@ -13,7 +13,6 @@ public:
 
 private:
 	models::Board * board;
-	void initializeBoardView(models::Board * board);
 };
 
 }

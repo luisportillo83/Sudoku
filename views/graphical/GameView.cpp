@@ -1,3 +1,6 @@
+#include <windows.h>
+#include "../../utils/WinApp.h"
+#include "../../utils/MainWnd.h"
 #include "GameView.h"
 
 namespace views {
@@ -26,6 +29,7 @@ const int GameView::getUserAction() {
 }
 
 void GameView::interact(controllers::MoveController * moveController) {
+	/*
 	std::vector<char> pullOneCardOptions = {'y', 'n'};
 	switch (getUserAction()) {
 		case GameView::UNDO:
@@ -46,7 +50,7 @@ void GameView::interact(controllers::MoveController * moveController) {
 	if (moveController->isGameFinished()) {
 		//utils::IO::instance()->writeLine("Felicidades! Has ganado!");
 		moveController->setState(models::State::FINAL);
-	}
+	}*/
 }
 
 }

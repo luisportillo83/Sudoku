@@ -10,10 +10,10 @@
 #include "models/Cell.h"
 #include "models/Region.h"
 
-
+/*
 LRESULT CALLBACK MainWndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam);
 
-INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInst,
+INT WINAPI WinMainxx(HINSTANCE hInstance, HINSTANCE hPrevInst,
 				   LPSTR lpCmdLine, int nCmdShow)
 {
 	MSG   Msg;
@@ -52,7 +52,7 @@ LRESULT CALLBACK MainWndProc(HWND hWnd, UINT Msg,
 	return DefWindowProc(hWnd, Msg, wParam, lParam);
 }
 
-/*
+
 int mainXXX(void) {
 	std::srand(unsigned(std::time(0)));
 

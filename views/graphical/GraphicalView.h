@@ -19,6 +19,8 @@
 #include "../../controllers/AbandonController.h"
 #include "../../View.h"
 #include "../../utils/WinMainParameters.h"
+#include "../../utils/WinApp.h"
+#include "../../utils/MainWnd.h"
 
 namespace views {
 
@@ -35,8 +37,11 @@ public:
 	void visit(controllers::SaveController * saveController);
 	void visit(controllers::AbandonController * abandonController);
 
+	static char CLASS_NAME[];
+	static LPCTSTR WINDOW_NAME;
+
 private:
-	utils::WinMainParameters * winMainParameters;
+	utils::WinApp * winApp;
 	StartView * startView;
 	GameView * gameView;
 	NewView * newView;

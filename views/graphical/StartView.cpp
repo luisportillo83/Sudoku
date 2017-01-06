@@ -1,19 +1,20 @@
+#include <windows.h>
+#include "../../utils/WinApp.h"
+#include "../../utils/MainWnd.h"
 #include <cassert>
 #include "StartView.h"
 
 namespace views {
 
-StartView::StartView(utils::WinMainParameters * winMainParameters) {
-	this->winMainParameters = winMainParameters;
+StartView::StartView() {
 }
 
 void StartView::interact(controllers::StartController * startController) {
-	WNDPROC windowProc;
-	assert(utils::WinMain::instance()->registerWindow(winMainParameters, windowProc));
-	assert(utils::WinMain::instance()->createWindow());
-
-	utils::WinMain::instance()->showWindow();
-	utils::WinMain::instance()->updateWindow();
+	MSG   Msg;
+	while(GetMessage(&Msg, NULL, 0, 0)) {
+		TranslateMessage(&Msg);
+		DispatchMessage(&Msg);
+	}
 }
 
 	/*
@@ -26,4 +27,6 @@ void StartView::interact(controllers::StartController * startController) {
 		startController->loadGame();
 	}
 	*/
+
+
 }

@@ -2,7 +2,7 @@
 
 namespace utils {
 
-WinAppp::WinAppp(HINSTANCE hInst, char *ClsName, WNDPROC WndPrc, LPCTSTR MenuName) {
+WinApp::WinApp(HINSTANCE hInst, char *ClsName, WNDPROC WndPrc, LPCTSTR MenuName) {
 	windowClassEs.cbSize        = sizeof(WNDCLASSEX);
 	windowClassEs.style         = CS_VREDRAW | CS_HREDRAW | CS_DBLCLKS;
 	windowClassEs.lpfnWndProc   = WndPrc;
@@ -17,7 +17,7 @@ WinAppp::WinAppp(HINSTANCE hInst, char *ClsName, WNDPROC WndPrc, LPCTSTR MenuNam
 	windowClassEs.hIconSm       = LoadIcon(NULL, IDI_APPLICATION);
 }
 
-void WinAppp::Register() {
+void WinApp::registerApp() {
 	RegisterClassEx(&windowClassEs);
 }
 
