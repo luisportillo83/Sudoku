@@ -22,8 +22,11 @@
 #include "../../utils/WinApp.h"
 #include "../../utils/MainWnd.h"
 
-#define hE1 123
-#define hS 124
+// TODO Poner esto como parte de la clase?
+#define HANDLE_BOARD 101
+#define HANDLE_NEW_GAME 110
+#define HANDLE_LOAD_GAME 111
+#define HANDLE_ABANDON_GAME 112
 
 namespace views {
 

@@ -10,29 +10,38 @@ unsigned int GraphicalView::WINDOW_WIDTH = 330;
 unsigned int GraphicalView::WINDOW_EIGHT = 400;
 
 LRESULT CALLBACK MainWndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam) {
-	HWND hEditControls[81],hSearch;
+	HWND hEditControls[81], handleNewGame, handleLoadGame, handleAbandonGame;
 	switch(Msg)	{
 	case WM_CREATE:
 		for(int i=0; i<9; i++)
 		{
 			for(int j=0; j<9; j++)
 			{
-				hEditControls[9*i+j]=CreateWindowExW(WS_EX_CLIENTEDGE,L"EDIT",L"",
-					WS_TABSTOP|WS_CHILD|WS_VISIBLE|SS_CENTER|ES_NUMBER,
-					24+(30*j),24+(30*i),24,24,hWnd,(HMENU)hE1,GetModuleHandle(NULL),NULL);
+				hEditControls[9*i+j] = CreateWindowExW(WS_EX_CLIENTEDGE,L"EDIT",L"",
+						WS_TABSTOP|WS_CHILD|WS_VISIBLE|SS_CENTER|ES_NUMBER, 24+(30*j), 24+(30*i), 24, 24,
+						hWnd, (HMENU)HANDLE_BOARD, GetModuleHandle(NULL), NULL);
 				SendMessage(hEditControls[9*i+j],EM_LIMITTEXT,1,0);
 			}
 
 		}
-		/*hSearch=CreateWindowExW(NULL,L"BUTTON",L"Solve!",
+		handleNewGame=CreateWindowExW(NULL,L"BUTTON",L"New",
 			WS_TABSTOP|WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,
-			24,300,265,30,hWnd,(HMENU)hS,GetModuleHandle(NULL),NULL);*/
+			30,310,75,35,hWnd,(HMENU)HANDLE_NEW_GAME,GetModuleHandle(NULL),NULL);
+		handleLoadGame=CreateWindowExW(NULL,L"BUTTON",L"Load",
+			WS_TABSTOP|WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,
+			120,310,75,35,hWnd,(HMENU)HANDLE_NEW_GAME,GetModuleHandle(NULL),NULL);
+		handleLoadGame=CreateWindowExW(NULL,L"BUTTON",L"Abandon",
+			WS_TABSTOP|WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,
+			210,310,75,35,hWnd,(HMENU)HANDLE_NEW_GAME,GetModuleHandle(NULL),NULL);
 		break;
 	case WM_COMMAND:
 		switch(LOWORD(wParam))
 		{
-		case hS:
-			//startSolver();
+		case HANDLE_BOARD:
+			// TODO numeros ...
+			break;
+		case HANDLE_NEW_GAME:
+			// TODO numeros ...
 			break;
 		}
 		break;
