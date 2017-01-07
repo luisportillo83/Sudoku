@@ -60,7 +60,8 @@ GraphicalView::GraphicalView(utils::WinMainParameters * winMainParameters) {
 	winApp->registerApp();
 
 	utils::MainWnd window;
-	window.Create(winMainParameters->getCurrentInstance(), GraphicalView::CLASS_NAME, GraphicalView::WINDOW_NAME);
+	window.Create(winMainParameters->getCurrentInstance(), GraphicalView::CLASS_NAME, GraphicalView::WINDOW_NAME, NULL,
+			WS_OVERLAPPEDWINDOW, 0L, CW_USEDEFAULT, CW_USEDEFAULT, 330, 400);
 	window.Show();
 
 	views::BoardView * boardView = new views::BoardView(); // TODO es necesario?
