@@ -22,6 +22,9 @@
 #include "../../utils/WinApp.h"
 #include "../../utils/MainWnd.h"
 
+#define hE1 123
+#define hS 124
+
 namespace views {
 
 class GraphicalView: public View {

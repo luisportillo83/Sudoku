@@ -24,9 +24,9 @@ LRESULT CALLBACK MainWndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam) 
 			}
 
 		}
-		hSearch=CreateWindowExW(NULL,L"BUTTON",L"Solve!",
+		/*hSearch=CreateWindowExW(NULL,L"BUTTON",L"Solve!",
 			WS_TABSTOP|WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,
-			24,300,265,30,hWnd,(HMENU)hS,GetModuleHandle(NULL),NULL);
+			24,300,265,30,hWnd,(HMENU)hS,GetModuleHandle(NULL),NULL);*/
 		break;
 	case WM_COMMAND:
 		switch(LOWORD(wParam))
@@ -34,20 +34,11 @@ LRESULT CALLBACK MainWndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam) 
 		case hS:
 			//startSolver();
 			break;
-		case ID_HELP_ABOUT:
-			MessageBox(hWnd, "Sudoku\nby Luis Portillo\nProyecto fin de EADS 2017", "About", MB_OK);
-			break;
-		case ID_FILE_CLEAR:
-			//clearCells();
-			break;
-		case ID_FILE_EXIT:
-			exit(0);
-			break;
 		}
 		break;
 	case WM_CLOSE:
 		DestroyWindow(hWnd);
-		break;
+		exit(0);
 	case WM_DESTROY:
 		PostQuitMessage(WM_QUIT);
 		break;

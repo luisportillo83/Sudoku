@@ -10,7 +10,7 @@
 #include "models/Cell.h"
 #include "models/Region.h"
 
-/*
+
 LRESULT CALLBACK MainWndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam);
 
 INT WINAPI WinMainxx(HINSTANCE hInstance, HINSTANCE hPrevInst,
@@ -146,4 +146,4 @@ int WINAPI WinMainXXX(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdL
 	}
 	return Msg.wParam;
 }
-*/
+
