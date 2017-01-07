@@ -39,6 +39,8 @@ public:
 
 	static char CLASS_NAME[];
 	static LPCTSTR WINDOW_NAME;
+	static unsigned int WINDOW_WIDTH;
+	static unsigned int WINDOW_EIGHT;
 
 private:
 	utils::WinApp * winApp;

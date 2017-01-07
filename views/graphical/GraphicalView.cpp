@@ -6,6 +6,8 @@ namespace views {
 
 char GraphicalView::CLASS_NAME[] = "SudokuClassName";
 LPCTSTR GraphicalView::WINDOW_NAME = "Sudoku";
+unsigned int GraphicalView::WINDOW_WIDTH = 330;
+unsigned int GraphicalView::WINDOW_EIGHT = 400;
 
 LRESULT CALLBACK MainWndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam) {
 	HWND hEditControls[81],hSearch;
@@ -61,7 +63,7 @@ GraphicalView::GraphicalView(utils::WinMainParameters * winMainParameters) {
 
 	utils::MainWnd window;
 	window.Create(winMainParameters->getCurrentInstance(), GraphicalView::CLASS_NAME, GraphicalView::WINDOW_NAME, NULL,
-			WS_OVERLAPPEDWINDOW, 0L, CW_USEDEFAULT, CW_USEDEFAULT, 330, 400);
+			WS_OVERLAPPEDWINDOW, 0L, CW_USEDEFAULT, CW_USEDEFAULT, GraphicalView::WINDOW_WIDTH, GraphicalView::WINDOW_EIGHT);
 	window.Show();
 
 	views::BoardView * boardView = new views::BoardView(); // TODO es necesario?
