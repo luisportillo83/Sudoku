@@ -8,7 +8,6 @@ namespace controllers {
 
 class MoveController: public OperationController {
 public:
-	MoveController(models::Game * game);
 	void accept(OperationControllerVisitor * operationControllerVisitor);
 };
 

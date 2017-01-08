@@ -2,11 +2,18 @@
 
 namespace models {
 
-const unsigned int Game::MAX_NUMBER_OF_PLAYERS = 1;
+Game * Game::game;
 
 Game::Game() {
 	board = new Board();
 	state.setState(State::INITIAL);
+}
+
+Game * Game::instance() {
+	if (Game::game == NULL) {
+		Game::game = new Game();
+	}
+	return Game::game;
 }
 
 void Game::createNewGame() {

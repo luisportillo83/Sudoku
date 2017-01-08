@@ -21,7 +21,7 @@
 #include "../../utils/WinMainParameters.h"
 #include "../../utils/WinApp.h"
 #include "../../utils/MainWnd.h"
-#include "../../models/Board.h"
+#include "../../models/Game.h"
 
 // TODO Poner esto como parte de la clase?
 #define HANDLE_BOARD 101

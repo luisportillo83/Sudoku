@@ -14,7 +14,6 @@
 
 
 class Logic {
-	models::Game * game;
 	controllers::StartController * startController;
 	controllers::MoveController * moveController;
 	controllers::NewController * newController;

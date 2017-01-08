@@ -2,7 +2,7 @@
 
 namespace controllers {
 
-OperationController::OperationController(models::Game * game): GameController(game)  {
+OperationController::OperationController() {
 }
 
 }

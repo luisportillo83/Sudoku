@@ -3,21 +3,18 @@
 
 namespace controllers {
 
-AbandonController::AbandonController(models::Game * game): OperationController(game) {
-}
-
 void AbandonController::accept(OperationControllerVisitor * operationControllerVisitor) {
 	operationControllerVisitor->visit(this);
 }
 
 void AbandonController::save(std::string savedGameName) {
-	assert(game->getState() == models::State::ABANDON);
+	assert(models::Game::instance()->getState() == models::State::ABANDON);
 	//utils::IO::instance()->writeLine("Partida " + savedGameName + " guardada correctamente");
 }
 
 void AbandonController::abandon() {
-	assert(game->getState() == models::State::ABANDON);
-	game->setState(models::State::FINAL);
+	assert(models::Game::instance()->getState() == models::State::ABANDON);
+	models::Game::instance()->setState(models::State::FINAL);
 }
 
 }

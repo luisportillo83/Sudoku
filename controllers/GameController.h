@@ -8,13 +8,10 @@ namespace controllers {
 
 class GameController {
 public:
-	GameController(models::Game * game);
+	GameController();
 	models::State::StateValues getState();
 	void setState(models::State::StateValues newState);
 	bool isGameFinished();
-protected:
-	models::Game * game;
-
 };
 
 }

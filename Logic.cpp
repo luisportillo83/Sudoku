@@ -1,18 +1,17 @@
 #include "Logic.h"
 
 Logic::Logic() {
-	game = new models::Game();
-	startController = new controllers::StartController(game);
-	moveController = new controllers::MoveController(game);
-	newController = new controllers::NewController(game);
-	loadController = new controllers::LoadController(game);
-	continueController = new controllers::ContinueController(game);
-	saveController = new controllers::SaveController(game);
-	abandonController = new controllers::AbandonController(game);
+	startController = new controllers::StartController();
+	moveController = new controllers::MoveController();
+	newController = new controllers::NewController();
+	loadController = new controllers::LoadController();
+	continueController = new controllers::ContinueController();
+	saveController = new controllers::SaveController();
+	abandonController = new controllers::AbandonController();
 }
 
 controllers::OperationController * Logic::getOperationController() {
-	switch (game->getState()) {
+	switch (models::Game::instance()->getState()) {
 		case models::State::INITIAL:
 			return startController;
 		case models::State::LOAD:

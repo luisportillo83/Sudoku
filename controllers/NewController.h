@@ -8,7 +8,6 @@ namespace controllers {
 
 class NewController: public OperationController {
 public:
-	NewController(models::Game * game);
 	void accept(OperationControllerVisitor * operationControllerVisitor);
 	void start(int numUsers);
 };

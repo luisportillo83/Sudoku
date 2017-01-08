@@ -8,7 +8,6 @@ namespace controllers {
 
 class ContinueController: public OperationController {
 public:
-	ContinueController(models::Game * game);
 	void accept(OperationControllerVisitor * operationControllerVisitor);
 	void continuePlaying();
 	void exit();

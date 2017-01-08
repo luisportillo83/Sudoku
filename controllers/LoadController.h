@@ -8,7 +8,6 @@ namespace controllers {
 
 class LoadController: public OperationController {
 public:
-	LoadController(models::Game * game);
 	void accept(OperationControllerVisitor * operationControllerVisitor);
 	void load();
 };

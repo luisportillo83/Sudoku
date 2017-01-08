@@ -8,15 +8,19 @@ namespace models {
 
 class Game {
 public:
-	Game();
+	static Game * instance();
+
 	void createNewGame();
 	bool isGameFinished();
 	State::StateValues getState();
 	void setState(State::StateValues newState);
 	Board * getBoard();
 
-	static const unsigned int MAX_NUMBER_OF_PLAYERS;
+	// TODO enum con los niveles de dificultad y que sea parametro de createNewGame
+
 private:
+	Game();
+	static Game * game;
 	Board * board;
 	State state;
 };

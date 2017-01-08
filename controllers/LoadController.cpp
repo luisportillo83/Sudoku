@@ -3,17 +3,14 @@
 
 namespace controllers {
 
-LoadController::LoadController(models::Game * game): OperationController(game) {
-}
-
 void LoadController::accept(OperationControllerVisitor * operationControllerVisitor) {
 	operationControllerVisitor->visit(this);
 }
 
 void LoadController::load() {
-	assert(game->getState() == models::State::LOAD);
+	assert(models::Game::instance()->getState() == models::State::LOAD);
 	// Load game
-	game->setState(models::State::PLAY);
+	models::Game::instance()->setState(models::State::PLAY);
 }
 
 }

@@ -8,7 +8,6 @@ namespace controllers {
 
 class AbandonController: public OperationController {
 public:
-	AbandonController(models::Game * game);
 	void accept(OperationControllerVisitor * operationControllerVisitor);
 	void save(std::string savedGameName);
 	void abandon();

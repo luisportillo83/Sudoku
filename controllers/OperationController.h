@@ -9,7 +9,7 @@ class OperationControllerVisitor;
 
 class OperationController: public GameController {
 public:
-	OperationController(models::Game * game);
+	OperationController();
 	virtual ~OperationController() {};
 	virtual void accept(OperationControllerVisitor * operationControllerVisitor) = 0;
 };
