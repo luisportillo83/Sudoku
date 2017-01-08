@@ -8,37 +8,40 @@ char GraphicalView::CLASS_NAME[] = "SudokuClassName";
 LPCTSTR GraphicalView::WINDOW_NAME = "Sudoku";
 unsigned int GraphicalView::WINDOW_WIDTH = 330;
 unsigned int GraphicalView::WINDOW_EIGHT = 400;
+const unsigned int GraphicalView::CELL_WIDTH = 25;
+const unsigned int GraphicalView::CELL_EIGHT = 25;
+const unsigned int GraphicalView::LEFT_MARGIN = 25;
+const unsigned int GraphicalView::TOP_MARGIN = 25 ;
 
 LRESULT CALLBACK MainWndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam) {
-	HWND hEditControls[81], handleNewGame, handleLoadGame, handleAbandonGame;
+	HWND handleBoard[models::Board::NUMBER_OF_CELLS];
+	HWND handleNewGame, handleLoadGame, handleAbandonGame, handleSaveGame;
+
 	switch(Msg)	{
 	case WM_CREATE:
-		for(int i=0; i<9; i++)
-		{
-			for(int j=0; j<9; j++)
-			{
-				hEditControls[9*i+j] = CreateWindowExW(WS_EX_CLIENTEDGE,L"EDIT",L"",
-						WS_TABSTOP|WS_CHILD|WS_VISIBLE|SS_CENTER|ES_NUMBER, 24+(30*j), 24+(30*i), 24, 24,
-						hWnd, (HMENU)HANDLE_BOARD, GetModuleHandle(NULL), NULL);
-				SendMessage(hEditControls[9*i+j],EM_LIMITTEXT,1,0);
+		for (unsigned int i = 0; i < models::Board::NUMBER_OF_ROWS; i++)	{
+			for (unsigned int j = 0; j < models::Board::NUMBER_OF_COLUMNS; j++) {
+				handleBoard[(models::Board::NUMBER_OF_ROWS * i) + j] = CreateWindowExW(WS_EX_CLIENTEDGE,L"EDIT",L"",
+						WS_TABSTOP|WS_CHILD|WS_VISIBLE|SS_CENTER|ES_NUMBER, GraphicalView::LEFT_MARGIN + (30 * j), GraphicalView::TOP_MARGIN + (30 * i),
+						GraphicalView::CELL_WIDTH, GraphicalView::CELL_EIGHT, hWnd, (HMENU)HANDLE_BOARD, GetModuleHandle(NULL), NULL);
+				SendMessage(handleBoard[(models::Board::NUMBER_OF_ROWS * i) + j], EM_LIMITTEXT, 1, 0);
 			}
-
 		}
-		handleNewGame=CreateWindowExW(NULL,L"BUTTON",L"New",
-			WS_TABSTOP|WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,
-			30,310,75,35,hWnd,(HMENU)HANDLE_NEW_GAME,GetModuleHandle(NULL),NULL);
-		handleLoadGame=CreateWindowExW(NULL,L"BUTTON",L"Load",
-			WS_TABSTOP|WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,
-			120,310,75,35,hWnd,(HMENU)HANDLE_NEW_GAME,GetModuleHandle(NULL),NULL);
-		handleLoadGame=CreateWindowExW(NULL,L"BUTTON",L"Abandon",
-			WS_TABSTOP|WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,
-			210,310,75,35,hWnd,(HMENU)HANDLE_NEW_GAME,GetModuleHandle(NULL),NULL);
+		handleNewGame = CreateWindowExW(NULL,L"BUTTON",L"New", WS_TABSTOP|WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,
+			GraphicalView::LEFT_MARGIN, 310, 65, 35,hWnd,(HMENU)HANDLE_NEW_GAME,GetModuleHandle(NULL),NULL);
+		handleLoadGame = CreateWindowExW(NULL,L"BUTTON",L"Load", WS_TABSTOP|WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,
+			92, 310, 65, 35,hWnd,(HMENU)HANDLE_LOAD_GAME,GetModuleHandle(NULL),NULL);
+		handleSaveGame = CreateWindowExW(NULL,L"BUTTON",L"Save", WS_TABSTOP|WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,
+			159, 310, 65, 35,hWnd,(HMENU)HANDLE_SAVE_GAME,GetModuleHandle(NULL),NULL);
+		handleAbandonGame = CreateWindowExW(NULL,L"BUTTON",L"Abandon", WS_TABSTOP|WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,
+			226, 310, 65, 35,hWnd,(HMENU)HANDLE_ABANDON_GAME,GetModuleHandle(NULL),NULL);
 		break;
 	case WM_COMMAND:
 		switch(LOWORD(wParam))
 		{
 		case HANDLE_BOARD:
-			// TODO numeros ...
+			// TODO check game is finished?
+			DefWindowProc(hWnd, Msg, wParam, lParam);
 			break;
 		case HANDLE_NEW_GAME:
 			// TODO numeros ...
