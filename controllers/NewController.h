@@ -3,13 +3,14 @@
 
 #include "OperationController.h"
 #include "OperationControllerVisitor.h"
+#include "../models/Game.h"
 
 namespace controllers {
 
 class NewController: public OperationController {
 public:
 	void accept(OperationControllerVisitor * operationControllerVisitor);
-	void start(int numUsers);
+	void start(models::Game::DifficultyLevel difficultyLevel);
 };
 
 }

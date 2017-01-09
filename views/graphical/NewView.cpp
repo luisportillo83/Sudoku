@@ -8,7 +8,8 @@ NewView::NewView() {
 
 void NewView::interact(controllers::NewController * newController) {
 	MessageBox(HWND(), "Sudoku", "About", MB_OK);
-	newController->start(0);
+
+	newController->start(models::Game::EASY);
 }
 
 }

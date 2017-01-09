@@ -10,13 +10,17 @@ class Game {
 public:
 	static Game * instance();
 
-	void createNewGame();
+	enum DifficultyLevel {
+		EASY = 0,
+		MEDIUM,
+		HARD
+	};
+
+	void createNewGame(Game::DifficultyLevel difficultyLevel);
 	bool isGameFinished();
 	State::StateValues getState();
 	void setState(State::StateValues newState);
 	Board * getBoard();
-
-	// TODO enum con los niveles de dificultad y que sea parametro de createNewGame
 
 private:
 	Game();
