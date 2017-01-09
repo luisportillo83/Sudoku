@@ -45,7 +45,7 @@ LRESULT CALLBACK MainWndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam) 
 			break;
 		case HANDLE_NEW_GAME:
 			// TODO
-			assert(models::Game::instance()->getState() == models::State::PLAY);
+			//assert(models::Game::instance()->getState() == models::State::PLAY);
 			models::Game::instance()->setState(models::State::NEW);
 			break;
 		case HANDLE_LOAD_GAME:
