@@ -1,3 +1,4 @@
+#include <cassert>
 #include <windows.h>
 #include "../../utils/WinApp.h"
 #include "../../utils/MainWnd.h"

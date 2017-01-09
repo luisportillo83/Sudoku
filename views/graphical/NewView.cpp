@@ -3,11 +3,11 @@
 
 namespace views {
 
-NewView::NewView(BoardView * boardView) {
-	this->boardView = boardView;
+NewView::NewView() {
 }
 
 void NewView::interact(controllers::NewController * newController) {
+	MessageBox(HWND(), "Sudoku", "About", MB_OK);
 	newController->start(0);
 }
 

@@ -37,21 +37,26 @@ LRESULT CALLBACK MainWndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam) 
 			226, 310, 65, 35,hWnd,(HMENU)HANDLE_ABANDON_GAME,GetModuleHandle(NULL),NULL);
 		break;
 	case WM_COMMAND:
-		switch(LOWORD(wParam))
-		{
+		switch (LOWORD(wParam)) {
 		case HANDLE_BOARD:
 			// TODO check game is finished?
 			DefWindowProc(hWnd, Msg, wParam, lParam);
 			break;
 		case HANDLE_NEW_GAME:
-			// TODO
-			//assert(models::Game::instance()->getState() == models::State::PLAY);
+			assert(models::Game::instance()->getState() == models::State::PLAY);
 			models::Game::instance()->setState(models::State::NEW);
 			break;
 		case HANDLE_LOAD_GAME:
-			// TODO
 			assert(models::Game::instance()->getState() == models::State::PLAY);
 			models::Game::instance()->setState(models::State::LOAD);
+			break;
+		case HANDLE_SAVE_GAME:
+			assert(models::Game::instance()->getState() == models::State::PLAY);
+			models::Game::instance()->setState(models::State::SAVE);
+			break;
+		case HANDLE_ABANDON_GAME:
+			assert(models::Game::instance()->getState() == models::State::PLAY);
+			models::Game::instance()->setState(models::State::ABANDON);
 			break;
 		}
 		break;
@@ -79,7 +84,7 @@ GraphicalView::GraphicalView(utils::WinMainParameters * winMainParameters) {
 	views::BoardView * boardView = new views::BoardView(); // TODO es necesario?
 	gameView = new views::GameView(boardView);
 
-	newView = new views::NewView(boardView);
+	newView = new views::NewView();
 	loadView = new views::LoadView(boardView);
 	continueView = new views::ContinueView();
 	saveView = new views::SaveView(boardView);
