@@ -3,7 +3,6 @@
 
 
 #include "controllers/OperationController.h"
-#include "controllers/StartController.h"
 #include "controllers/MoveController.h"
 #include "controllers/NewController.h"
 #include "controllers/LoadController.h"
@@ -14,7 +13,6 @@
 
 
 class Logic {
-	controllers::StartController * startController;
 	controllers::MoveController * moveController;
 	controllers::NewController * newController;
 	controllers::LoadController * loadController;

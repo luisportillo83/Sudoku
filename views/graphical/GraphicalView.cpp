@@ -44,7 +44,14 @@ LRESULT CALLBACK MainWndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam) 
 			DefWindowProc(hWnd, Msg, wParam, lParam);
 			break;
 		case HANDLE_NEW_GAME:
-
+			// TODO
+			assert(models::Game::instance()->getState() == models::State::PLAY);
+			models::Game::instance()->setState(models::State::NEW);
+			break;
+		case HANDLE_LOAD_GAME:
+			// TODO
+			assert(models::Game::instance()->getState() == models::State::PLAY);
+			models::Game::instance()->setState(models::State::LOAD);
 			break;
 		}
 		break;
@@ -72,7 +79,6 @@ GraphicalView::GraphicalView(utils::WinMainParameters * winMainParameters) {
 	views::BoardView * boardView = new views::BoardView(); // TODO es necesario?
 	gameView = new views::GameView(boardView);
 
-	startView = new views::StartView();
 	newView = new views::NewView(boardView);
 	loadView = new views::LoadView(boardView);
 	continueView = new views::ContinueView();
@@ -83,10 +89,6 @@ GraphicalView::GraphicalView(utils::WinMainParameters * winMainParameters) {
 void GraphicalView::interact(controllers::OperationController * operationController) {
 	assert(operationController != NULL);
 	operationController->accept(this);
-}
-
-void GraphicalView::visit(controllers::StartController * startController) {
-	startView->interact(startController);
 }
 
 void GraphicalView::visit(controllers::MoveController* moveController) {

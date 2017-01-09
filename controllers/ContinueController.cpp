@@ -9,7 +9,7 @@ void ContinueController::accept(OperationControllerVisitor * operationController
 
 void ContinueController::continuePlaying() {
 	assert(models::Game::instance()->getState() == models::State::FINAL);
-	models::Game::instance()->setState(models::State::INITIAL);
+	models::Game::instance()->setState(models::State::PLAY);
 }
 
 void ContinueController::exit() {

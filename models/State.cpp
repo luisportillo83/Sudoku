@@ -3,7 +3,7 @@
 namespace models {
 
 State::State() {
-	state = INITIAL;
+	state = PLAY;
 }
 
 void State::setState(StateValues newState) {

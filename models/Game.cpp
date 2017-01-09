@@ -6,7 +6,7 @@ Game * Game::game;
 
 Game::Game() {
 	board = new Board();
-	state.setState(State::INITIAL);
+	state.setState(State::PLAY);
 }
 
 Game * Game::instance() {

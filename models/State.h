@@ -9,10 +9,9 @@ class State {
 public:
 	enum StateValues
 	{
-		INITIAL = 0,
+		PLAY = 0,
 		LOAD,
 		NEW,
-		PLAY,
 		ABANDON,
 		SAVE,
 		FINAL,

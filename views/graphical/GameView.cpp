@@ -29,6 +29,11 @@ const int GameView::getUserAction() {
 }
 
 void GameView::interact(controllers::MoveController * moveController) {
+	MSG   Msg;
+	while(GetMessage(&Msg, NULL, 0, 0)) {
+		TranslateMessage(&Msg);
+		DispatchMessage(&Msg);
+	}
 	/*
 	std::vector<char> pullOneCardOptions = {'y', 'n'};
 	switch (getUserAction()) {

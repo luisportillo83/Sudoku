@@ -1,7 +1,6 @@
 #include "Logic.h"
 
 Logic::Logic() {
-	startController = new controllers::StartController();
 	moveController = new controllers::MoveController();
 	newController = new controllers::NewController();
 	loadController = new controllers::LoadController();
@@ -12,14 +11,12 @@ Logic::Logic() {
 
 controllers::OperationController * Logic::getOperationController() {
 	switch (models::Game::instance()->getState()) {
-		case models::State::INITIAL:
-			return startController;
+		case models::State::PLAY:
+			return moveController;
 		case models::State::LOAD:
 			return loadController;
 		case models::State::NEW:
 			return newController;
-		case models::State::PLAY:
-			return moveController;
 		case models::State::SAVE:
 			return saveController;
 		case models::State::ABANDON:
