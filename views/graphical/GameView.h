@@ -21,7 +21,6 @@ private:
 		ABANDON = 4
 	};
 
-	const int getUserAction();
 };
 
 }

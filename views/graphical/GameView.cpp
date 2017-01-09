@@ -9,28 +9,9 @@ GameView::GameView(BoardView * boardView) {
 	this->boardView = boardView;
 }
 
-const int GameView::getUserAction() {
-	/*
-	utils::IO::instance()->writeLine("Acciones:");
-	utils::IO::instance()->writeLine("1.- Mover de Descarte a Baraja");
-	utils::IO::instance()->writeLine("2.- Mover de Baraja a Descarte");
-	utils::IO::instance()->writeLine("3.- Mover de Descarte a Palo");
-	utils::IO::instance()->writeLine("4.- Mover de Descarte a Trabajo");
-	utils::IO::instance()->writeLine("5.- Mover de Trabajo a Palo");
-	utils::IO::instance()->writeLine("6.- Mover de Trabajo a Trabajo");
-	utils::IO::instance()->writeLine("7.- Mover de Palo a Trabajo");
-	utils::IO::instance()->writeLine("8.- Deshacer movimiento");
-	utils::IO::instance()->writeLine("9.- Rehacer movimiento");
-	utils::IO::instance()->writeLine("10.- Salvar partida");
-	utils::IO::instance()->writeLine("11.- Abandonar partida");
-	return (utils::LimitedIntOption::instance()->read("Seleccione accion: ", 1, 11));
-	*/
-	return 0;
-}
-
 void GameView::interact(controllers::MoveController * moveController) {
 	MSG   Msg;
-	while(GetMessage(&Msg, NULL, 0, 0)) {
+	while(GetMessage(&Msg, NULL, 0, 0) && models::Game::instance()->getState() == models::State::PLAY) {
 		TranslateMessage(&Msg);
 		DispatchMessage(&Msg);
 	}
