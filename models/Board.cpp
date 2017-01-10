@@ -24,6 +24,12 @@ void Board::setValue(unsigned int row, unsigned int column, unsigned int value) 
 	cells[(row * Board::NUMBER_OF_COLUMNS) + column]->setValue(value);
 }
 
+bool Board::canPutValue(unsigned int value, unsigned int row, unsigned int column) {
+	return (!isValueInColumn(value, column) &&
+			(!isValueinRow(value, row) &&
+			(!isValueInRegion(value, row, column))));
+}
+
 unsigned int Board::getValue(unsigned int row, unsigned int column) {
 	assert(row <= Board::NUMBER_OF_ROWS);
 	assert(column <= Board::NUMBER_OF_COLUMNS);
@@ -63,7 +69,7 @@ bool Board::isColumnCompleted(unsigned int column) {
 	std::vector<Cell *> columnToCheck;
 
 	for (unsigned int i = 0; i < Board::NUMBER_OF_ROWS; i++) {
-		columnToCheck.push_back(cells.at(column));
+		columnToCheck.push_back(cells.at((column * Board::NUMBER_OF_ROWS) + i));
 	}
 	return hasAllNumbers(columnToCheck);
 }
@@ -72,7 +78,7 @@ bool Board::isRegionCompleted(unsigned int region) {
 	std::vector<Cell *> regionToCheck;
 
 	for (unsigned int i = 0; i < Board::NUMBER_OF_ROWS; i++) {
-
+		// TODO
 		regionToCheck.push_back(cells.at(region));
 	}
 	return hasAllNumbers(regionToCheck);
@@ -92,6 +98,28 @@ bool Board::hasAllNumbers(std::vector<Cell *> cells) {
 		}
 	}
 	return true;
+}
+
+bool Board::isValueinRow(unsigned int value, unsigned int row) {
+	for (unsigned int i = 0; i < Board::NUMBER_OF_COLUMNS; i++) {
+		if (cells.at((row * Board::NUMBER_OF_COLUMNS) + i)->getValue() == value) {
+			return true;
+		}
+	}
+	return false;
+}
+
+bool Board::isValueInColumn(unsigned int value, unsigned int column) {
+	for (unsigned int i = 0; i < Board::NUMBER_OF_ROWS; i++) {
+		if (cells.at((i * Board::NUMBER_OF_ROWS) + column)->getValue() == value) {
+			return true;
+		}
+	}
+	return false;
+}
+
+bool Board::isValueInRegion(unsigned int value, unsigned int row, unsigned int column) {
+	return false;
 }
 
 }

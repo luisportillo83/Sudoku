@@ -13,6 +13,7 @@ public:
 		HARD
 	};
 	static void initialize(Board * board, DifficultyLevel difficultyLevel);
+	static unsigned int timesToGetRightRandomNumber;
 };
 
 }

@@ -10,7 +10,7 @@ NewView::NewView(utils::WinMainParameters * winMainParameters) {
 }
 
 void NewView::interact(controllers::NewController * newController) {
-	MessageBox(HWND(), "NewView", "NewView", MB_OK);
+	//MessageBox(HWND(), "NewView", "NewView", MB_OK);
 
 	// TODO ComboBox, put this in utils??
 
