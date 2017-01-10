@@ -2,6 +2,7 @@
 #define MODELS_GAME_H_
 
 #include "Board.h"
+#include "BoardInitializer.h"
 #include "State.h"
 
 namespace models {
@@ -10,13 +11,7 @@ class Game {
 public:
 	static Game * instance();
 
-	enum DifficultyLevel {
-		EASY = 0,
-		MEDIUM,
-		HARD
-	};
-
-	void createNewGame(Game::DifficultyLevel difficultyLevel);
+	void createNewGame(BoardInitializer::DifficultyLevel difficultyLevel);
 	bool isGameFinished();
 	State::StateValues getState();
 	void setState(State::StateValues newState);

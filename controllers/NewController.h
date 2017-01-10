@@ -10,7 +10,7 @@ namespace controllers {
 class NewController: public OperationController {
 public:
 	void accept(OperationControllerVisitor * operationControllerVisitor);
-	void start(models::Game::DifficultyLevel difficultyLevel);
+	void start(models::BoardInitializer::DifficultyLevel difficultyLevel);
 };
 
 }

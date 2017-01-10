@@ -16,8 +16,8 @@ Game * Game::instance() {
 	return Game::game;
 }
 
-void Game::createNewGame(Game::DifficultyLevel difficultyLevel) {
-	//board->initializeStackWithNewCards();
+void Game::createNewGame(BoardInitializer::DifficultyLevel difficultyLevel) {
+	BoardInitializer::initialize(board, difficultyLevel);
 	state.setState(State::PLAY);
 }
 

@@ -7,10 +7,10 @@ void NewController::accept(OperationControllerVisitor * operationControllerVisit
 	operationControllerVisitor->visit(this);
 }
 
-void NewController::start(models::Game::DifficultyLevel difficultyLevel) {
+void NewController::start(models::BoardInitializer::DifficultyLevel difficultyLevel) {
 	assert(models::Game::instance()->getState() == models::State::NEW);
 	// TODO, el parametro que sea el nivel de dificultad? Comprobarlo con el assert
-	models::Game::instance()->createNewGame(models::Game::EASY);
+	models::Game::instance()->createNewGame(models::BoardInitializer::EASY);
 }
 
 }
