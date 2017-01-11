@@ -36,6 +36,7 @@ LRESULT CALLBACK MainWndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam) 
 		handleAbandonGame = CreateWindowExW(NULL,L"BUTTON",L"Abandon", WS_TABSTOP|WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,
 			226, 310, 65, 35,hWnd,(HMENU)HANDLE_ABANDON_GAME,GetModuleHandle(NULL),NULL);
 		break;
+
 	case WM_COMMAND:
 		switch (LOWORD(wParam)) {
 		case HANDLE_BOARD:
@@ -69,6 +70,7 @@ LRESULT CALLBACK MainWndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam) 
 	default:
 		return DefWindowProc(hWnd, Msg, wParam, lParam);
 	}
+
 	return 0;
 }
 

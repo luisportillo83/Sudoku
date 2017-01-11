@@ -1,6 +1,7 @@
 #include <cassert>
 #include <algorithm>
 #include <math.h>
+#include <iostream>
 #include "Board.h"
 
 namespace models {
@@ -69,7 +70,7 @@ bool Board::isColumnCompleted(unsigned int column) {
 	std::vector<Cell *> columnToCheck;
 
 	for (unsigned int i = 0; i < Board::NUMBER_OF_ROWS; i++) {
-		columnToCheck.push_back(cells.at((column * Board::NUMBER_OF_ROWS) + i));
+		columnToCheck.push_back(cells.at((i * Board::NUMBER_OF_ROWS) + column));
 	}
 	return hasAllNumbers(columnToCheck);
 }
@@ -81,19 +82,25 @@ bool Board::isRegionCompleted(unsigned int region) {
 		// TODO
 		regionToCheck.push_back(cells.at(region));
 	}
-	return hasAllNumbers(regionToCheck);
+	return true;
+	// TODO return hasAllNumbers(regionToCheck);
 }
 
 bool Board::hasAllNumbers(std::vector<Cell *> cells) {
 	assert(cells.size() == Board::NUMBER_OF_ROWS);
+	std::vector<unsigned int> cellValues;
+
 	for (unsigned int i = 0; i < cells.size(); i++) {
-		if (cells.at(i)->getValue() != Cell::CELL_NO_VALUE) {
+		if (cells.at(i)->getValue() == Cell::CELL_NO_VALUE) {
 			return false;
 		}
+		cellValues.push_back(cells.at(i)->getValue());
 	}
-	std::sort(cells.begin(), cells.end());
-	for (unsigned int i = 0; i < cells.size(); i++) {
-		if (cells.at(i)->getValue() != i) {
+
+	std::sort(cellValues.begin(), cellValues.end());
+
+	for (unsigned int i = 0; i < cellValues.size(); i++) {
+		if (cellValues.at(i) != (i + 1)) {
 			return false;
 		}
 	}
@@ -119,6 +126,7 @@ bool Board::isValueInColumn(unsigned int value, unsigned int column) {
 }
 
 bool Board::isValueInRegion(unsigned int value, unsigned int row, unsigned int column) {
+	// TODO
 	return false;
 }
 
