@@ -1,3 +1,4 @@
+#include <iostream>
 #include "Game.h"
 
 namespace models {
@@ -18,6 +19,7 @@ Game * Game::instance() {
 
 void Game::createNewGame(BoardInitializer::DifficultyLevel difficultyLevel) {
 	BoardInitializer::initialize(board, difficultyLevel);
+	//std::cout << std::endl << board->getValue(1,2) << std::endl;
 	state.setState(State::PLAY);
 }
 

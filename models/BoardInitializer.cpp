@@ -28,6 +28,7 @@ void BoardInitializer::initialize(Board * board, DifficultyLevel difficultyLevel
 		}
 		std::cout << std::endl;
 	}
+	std::cout << std::endl;
 }
 
 }
