@@ -22,17 +22,6 @@ LRESULT CALLBACK MainWndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam) 
 	//HWND handleBoard[models::Board::NUMBER_OF_CELLS];
 	HWND handleNewGame, handleLoadGame, handleAbandonGame, handleSaveGame;
 
-	for (unsigned int i = 0; i < models::Board::NUMBER_OF_ROWS; i++) {
-		for (unsigned int j = 0; j < models::Board::NUMBER_OF_COLUMNS; j++) {
-			if (models::Game::instance()->getBoard()->getValue(i, j) != models::Cell::CELL_NO_VALUE) {
-				//std::cout << models::Game::instance()->getBoard()->getValue(1,2) << std::endl;
-				//SendMessage(handleBoard[(models::Board::NUMBER_OF_ROWS * i) + j], WM_SETTEXT, 0, (LPARAM)L"2");
-				//SendMessage(handleBoard[2],WM_SETTEXT,0,(LPARAM)L"x");
-				//Sleep(1000);
-			}
-		}
-	}
-
 	switch(Msg)	{
 	case WM_CREATE:
 		for (unsigned int i = 0; i < models::Board::NUMBER_OF_ROWS; i++) {
@@ -42,14 +31,11 @@ LRESULT CALLBACK MainWndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam) 
 						GraphicalView::CELL_WIDTH, GraphicalView::CELL_EIGHT, hWnd, (HMENU)HANDLE_BOARD, GetModuleHandle(NULL), NULL);
 				SendMessage(handleBoard[(models::Board::NUMBER_OF_ROWS * i) + j], EM_LIMITTEXT, 1, 0);
 
-				/*
-				if (models::Game::instance()->getBoard()->getValue(i, j) == models::Cell::CELL_NO_VALUE) {
-					SendMessage(handleBoard[(models::Board::NUMBER_OF_ROWS * i) + j], WM_SETTEXT, 0, (LPARAM)L"0");
+				if (models::Game::instance()->getValue(i, j) == models::Cell::CELL_NO_VALUE) {
+					SendMessage(handleBoard[(models::Board::NUMBER_OF_ROWS * i) + j], WM_SETTEXT, 0, (LPARAM)L"-");
 				} else {
-					SendMessage(handleBoard[(models::Board::NUMBER_OF_ROWS * i) + j], WM_SETTEXT, 0, (LPARAM)L"1");
+					SendMessage(handleBoard[(models::Board::NUMBER_OF_ROWS * i) + j], WM_SETTEXT, 0, (LPARAM)L"E");
 				}
-				*/
-
 			}
 		}
 		handleNewGame = CreateWindowExW(NULL,L"BUTTON",L"New", WS_TABSTOP|WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,
@@ -60,11 +46,6 @@ LRESULT CALLBACK MainWndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam) 
 			159, 310, 65, 35,hWnd,(HMENU)HANDLE_SAVE_GAME,GetModuleHandle(NULL),NULL);
 		handleAbandonGame = CreateWindowExW(NULL,L"BUTTON",L"Abandon", WS_TABSTOP|WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,
 			226, 310, 65, 35,hWnd,(HMENU)HANDLE_ABANDON_GAME,GetModuleHandle(NULL),NULL);
-
-		// SendMessage(handleBoard[2],WM_SETTEXT,0,(LPARAM)models::Game::instance()->getBoard()->getValue(1, 0));     //std::to_string().c_str());
-		SendMessage(handleBoard[1],WM_SETTEXT,0,(LPARAM)L"x");
-		SendMessage(handleBoard[2],WM_SETTEXT,0,(LPARAM)L"y");
-		SendMessage(handleBoard[3],WM_SETTEXT,0,(LPARAM)L"z");
 		break;
 
 	case WM_COMMAND:
@@ -80,7 +61,6 @@ LRESULT CALLBACK MainWndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam) 
 		case HANDLE_LOAD_GAME:
 			assert(models::Game::instance()->getState() == models::State::PLAY);
 			models::Game::instance()->setState(models::State::LOAD);
-			SendMessage(handleBoard[3],WM_SETTEXT,0,(LPARAM)L"A");
 			break;
 		case HANDLE_SAVE_GAME:
 			assert(models::Game::instance()->getState() == models::State::PLAY);

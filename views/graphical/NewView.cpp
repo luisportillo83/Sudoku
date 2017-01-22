@@ -5,6 +5,9 @@
 
 namespace views {
 
+// TODO Improve this
+extern HWND handleBoard[81];
+
 NewView::NewView(utils::WinMainParameters * winMainParameters) {
 	this->winMainParameters = winMainParameters;
 }
@@ -31,6 +34,15 @@ void NewView::interact(controllers::NewController * newController) {
 	SendMessage(hWndComboBox, CB_SETCURSEL, (WPARAM)2, (LPARAM)0);
 
 	newController->start(models::BoardInitializer::EASY);
+
+	unsigned int cellValue = models::Cell::CELL_NO_VALUE;
+	for (unsigned int i = 0; i < models::Board::NUMBER_OF_ROWS; i++) {
+		for (unsigned int j = 0; j < models::Board::NUMBER_OF_COLUMNS; j++) {
+			cellValue = models::Game::instance()->getValue(i, j);
+			SendMessage(handleBoard[(i * models::Board::NUMBER_OF_ROWS) + j],WM_SETTEXT,0, (LPARAM)std::to_string(cellValue).c_str());
+
+		}
+	}
 }
 
 }

@@ -19,7 +19,6 @@ Game * Game::instance() {
 
 void Game::createNewGame(BoardInitializer::DifficultyLevel difficultyLevel) {
 	BoardInitializer::initialize(board, difficultyLevel);
-	//std::cout << std::endl << board->getValue(1,2) << std::endl;
 	state.setState(State::PLAY);
 }
 
@@ -39,8 +38,9 @@ void Game::setState(State::StateValues newState) {
 	state.setState(newState);
 }
 
-Board * Game::getBoard() {
-	return board;
+unsigned int Game::getValue(unsigned int row, unsigned int column) {
+	return board->getValue(row, column);
 }
+
 
 }

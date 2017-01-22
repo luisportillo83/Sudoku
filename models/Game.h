@@ -15,7 +15,8 @@ public:
 	bool isGameFinished();
 	State::StateValues getState();
 	void setState(State::StateValues newState);
-	Board * getBoard();
+	unsigned int getValue(unsigned int row, unsigned int column);
+
 
 private:
 	Game();
