@@ -20,6 +20,7 @@ void SaveView::interact(controllers::SaveController * saveController) {
 		saveController->exitPlay();
 	}
 	*/
+	saveController->continuePlay();
 }
 
 }

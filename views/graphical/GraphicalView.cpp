@@ -63,6 +63,8 @@ LRESULT CALLBACK MainWndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam) 
 
 		// SendMessage(handleBoard[2],WM_SETTEXT,0,(LPARAM)models::Game::instance()->getBoard()->getValue(1, 0));     //std::to_string().c_str());
 		SendMessage(handleBoard[1],WM_SETTEXT,0,(LPARAM)L"x");
+		SendMessage(handleBoard[2],WM_SETTEXT,0,(LPARAM)L"y");
+		SendMessage(handleBoard[3],WM_SETTEXT,0,(LPARAM)L"z");
 		break;
 
 	case WM_COMMAND:
@@ -78,12 +80,11 @@ LRESULT CALLBACK MainWndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam) 
 		case HANDLE_LOAD_GAME:
 			assert(models::Game::instance()->getState() == models::State::PLAY);
 			models::Game::instance()->setState(models::State::LOAD);
+			SendMessage(handleBoard[3],WM_SETTEXT,0,(LPARAM)L"A");
 			break;
 		case HANDLE_SAVE_GAME:
 			assert(models::Game::instance()->getState() == models::State::PLAY);
 			models::Game::instance()->setState(models::State::SAVE);
-			// TEST:
-			// SendMessage(handleBoard[2], WM_SETTEXT, 0, (LPARAM)L"9");
 			break;
 		case HANDLE_ABANDON_GAME:
 			assert(models::Game::instance()->getState() == models::State::PLAY);

@@ -8,7 +8,6 @@ LoadView::LoadView(BoardView * boardView) {
 
 void LoadView::interact(controllers::LoadController * loadController) {
 	loadController->load();
-	boardView->print(loadController);
 }
 
 }
