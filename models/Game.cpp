@@ -42,5 +42,8 @@ unsigned int Game::getValue(unsigned int row, unsigned int column) {
 	return board->getValue(row, column);
 }
 
+void Game::setValue(unsigned int row, unsigned int column, unsigned int value) {
+	board->setValue(row, column, value);
+}
 
 }

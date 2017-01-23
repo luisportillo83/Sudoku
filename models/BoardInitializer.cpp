@@ -29,6 +29,20 @@ void BoardInitializer::initialize(Board * board, DifficultyLevel difficultyLevel
 		std::cout << std::endl;
 	}
 	std::cout << std::endl;
+
+	unsigned int row = 0;
+	unsigned int column = 0;
+	for (unsigned int i = 0; i < numberOfEmptyCellsInBoard(difficultyLevel); i++) {
+		do {
+			row = rand()%(models::Board::NUMBER_OF_ROWS);
+			column = rand()%(models::Board::NUMBER_OF_COLUMNS);
+		} while (board->getValue(row, column) == models::Cell::CELL_NO_VALUE);
+		board->clearCell(row, column);
+	}
+}
+
+unsigned int BoardInitializer::numberOfEmptyCellsInBoard(DifficultyLevel difficultyLevel) {
+	return (30 - (difficultyLevel * 5));
 }
 
 }

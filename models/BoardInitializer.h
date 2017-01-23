@@ -14,6 +14,8 @@ public:
 	};
 	static void initialize(Board * board, DifficultyLevel difficultyLevel);
 	static unsigned int timesToGetRightRandomNumber;
+private:
+	static unsigned int numberOfEmptyCellsInBoard(DifficultyLevel difficultyLevel);
 };
 
 }

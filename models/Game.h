@@ -13,6 +13,7 @@ public:
 
 	void createNewGame(BoardInitializer::DifficultyLevel difficultyLevel);
 	bool isGameFinished();
+	void setValue(unsigned int row, unsigned int column, unsigned int value);
 	State::StateValues getState();
 	void setState(State::StateValues newState);
 	unsigned int getValue(unsigned int row, unsigned int column);
