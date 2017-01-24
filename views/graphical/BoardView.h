@@ -9,7 +9,6 @@ namespace views {
 class BoardView {
 public:
 	BoardView();
-	void print(controllers::GameController * gameController);
 	void print();
 
 private:
