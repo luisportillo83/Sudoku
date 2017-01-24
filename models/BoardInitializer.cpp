@@ -6,7 +6,8 @@
 
 namespace models {
 
-unsigned int BoardInitializer::timesToGetRightRandomNumber = 1000;
+unsigned int BoardInitializer::INITIAL_NUMBER_OF_CELLS_TO_REMOVE = 30;
+unsigned int BoardInitializer::NUMBER_OF_CELLS_TO_REMOVE_WITH_EVERY_LEVEL = 10;
 
 void BoardInitializer::initialize(Board * board, DifficultyLevel difficultyLevel) {
 	std::vector<unsigned int> table;
@@ -42,7 +43,7 @@ void BoardInitializer::initialize(Board * board, DifficultyLevel difficultyLevel
 }
 
 unsigned int BoardInitializer::numberOfEmptyCellsInBoard(DifficultyLevel difficultyLevel) {
-	return (30 - (difficultyLevel * 5));
+	return (BoardInitializer::INITIAL_NUMBER_OF_CELLS_TO_REMOVE - (difficultyLevel * BoardInitializer::NUMBER_OF_CELLS_TO_REMOVE_WITH_EVERY_LEVEL));
 }
 
 }
