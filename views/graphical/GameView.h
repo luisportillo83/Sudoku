@@ -9,18 +9,8 @@ namespace views {
 
 class GameView {
 public:
-	GameView(BoardView * boardView);
+	GameView();
 	void interact(controllers::MoveController * moveController);
-private:
-	BoardView * boardView;
-
-	enum menuOptions {
-		UNDO = 1,
-		REDO = 2,
-		SAVE = 3,
-		ABANDON = 4
-	};
-
 };
 
 }

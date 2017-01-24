@@ -95,9 +95,9 @@ GraphicalView::GraphicalView(utils::WinMainParameters * winMainParameters) {
 			WS_OVERLAPPEDWINDOW, 0L, CW_USEDEFAULT, CW_USEDEFAULT, GraphicalView::WINDOW_WIDTH, GraphicalView::WINDOW_EIGHT);
 	window.Show();
 
-	views::BoardView * boardView = new views::BoardView();
-	gameView = new views::GameView(boardView);
+	gameView = new views::GameView();
 
+	views::BoardView * boardView = new views::BoardView();
 	newView = new views::NewView(winMainParameters, boardView);
 	loadView = new views::LoadView(boardView);
 	continueView = new views::ContinueView();

@@ -6,8 +6,7 @@
 
 namespace views {
 
-GameView::GameView(BoardView * boardView) {
-	this->boardView = boardView;
+GameView::GameView() {
 }
 
 void GameView::interact(controllers::MoveController * moveController) {
