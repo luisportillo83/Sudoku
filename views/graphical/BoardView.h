@@ -10,6 +10,7 @@ class BoardView {
 public:
 	BoardView();
 	void print(controllers::GameController * gameController);
+	void print();
 
 private:
 	models::Board * board;
