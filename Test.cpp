@@ -8,9 +8,6 @@
 #include "Sudoku.h"
 #include "models/Board.h"
 #include "models/Cell.h"
-#include "models/Region.h"
-
-
 
 LRESULT CALLBACK MainWndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam);
 
@@ -71,12 +68,6 @@ int mainXXX(void) {
 	for (int i = 1; i <= models::Cell::CELL_MAX_VALUE; i++) {
 		c.setValue(i);
 		v.push_back(&c);
-	}
-
-	models::Region r;
-	r.addCells(v);
-	if (r.isCompleted()) {
-		std::cout << ":-D" << std::endl;
 	}
 
 	return 0;
