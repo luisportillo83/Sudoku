@@ -31,6 +31,14 @@ void BoardInitializer::initialize(Board * board, DifficultyLevel difficultyLevel
 	}
 	std::cout << std::endl;
 
+	removeCellsInBoardForLevel(board, difficultyLevel);
+}
+
+unsigned int BoardInitializer::numberOfEmptyCellsInBoard(DifficultyLevel difficultyLevel) {
+	return (BoardInitializer::INITIAL_NUMBER_OF_CELLS_TO_REMOVE - (difficultyLevel * BoardInitializer::NUMBER_OF_CELLS_TO_REMOVE_WITH_EVERY_LEVEL));
+}
+
+void BoardInitializer::removeCellsInBoardForLevel(Board * board, DifficultyLevel difficultyLevel) {
 	unsigned int row = 0;
 	unsigned int column = 0;
 	for (unsigned int i = 0; i < numberOfEmptyCellsInBoard(difficultyLevel); i++) {
@@ -40,10 +48,6 @@ void BoardInitializer::initialize(Board * board, DifficultyLevel difficultyLevel
 		} while (board->getValue(row, column) == models::Cell::CELL_NO_VALUE);
 		board->clearCell(row, column);
 	}
-}
-
-unsigned int BoardInitializer::numberOfEmptyCellsInBoard(DifficultyLevel difficultyLevel) {
-	return (BoardInitializer::INITIAL_NUMBER_OF_CELLS_TO_REMOVE - (difficultyLevel * BoardInitializer::NUMBER_OF_CELLS_TO_REMOVE_WITH_EVERY_LEVEL));
 }
 
 }
