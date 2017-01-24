@@ -7,7 +7,7 @@ Game * Game::game;
 
 Game::Game() {
 	board = new Board();
-	state.setState(State::PLAY);
+	state.setState(State::INITIAL);
 }
 
 Game * Game::instance() {
@@ -20,6 +20,17 @@ Game * Game::instance() {
 void Game::createNewGame(BoardInitializer::DifficultyLevel difficultyLevel) {
 	BoardInitializer::initialize(board, difficultyLevel);
 	state.setState(State::PLAY);
+}
+
+bool Game::isGameOnGoing() {
+	for (unsigned int i = 0; i < models::Board::NUMBER_OF_ROWS; i++) {
+		for (unsigned int j = 0; j < models::Board::NUMBER_OF_COLUMNS; j++) {
+			if (board->getValue(i, j) == models::Cell::CELL_NO_VALUE) {
+				// TODO ...
+			}
+		}
+	}
+	return true;
 }
 
 bool Game::isGameFinished() {

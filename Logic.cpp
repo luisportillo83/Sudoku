@@ -11,6 +11,7 @@ Logic::Logic() {
 
 controllers::OperationController * Logic::getOperationController() {
 	switch (models::Game::instance()->getState()) {
+		case models::State::INITIAL:
 		case models::State::PLAY:
 			return moveController;
 		case models::State::LOAD:

@@ -11,7 +11,7 @@ GameView::GameView() {
 
 void GameView::interact(controllers::MoveController * moveController) {
 	MSG   Msg;
-	while(GetMessage(&Msg, NULL, 0, 0) && models::Game::instance()->getState() == models::State::PLAY) {
+	while(GetMessage(&Msg, NULL, 0, 0) && (models::Game::instance()->getState() == models::State::INITIAL || models::Game::instance()->getState() == models::State::PLAY)) {
 		TranslateMessage(&Msg);
 		DispatchMessage(&Msg);
 	}
