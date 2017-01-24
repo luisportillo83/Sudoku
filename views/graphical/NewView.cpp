@@ -35,18 +35,14 @@ void NewView::interact(controllers::NewController * newController) {
 
 	newController->start(models::BoardInitializer::EASY);
 
-	unsigned int cellValue = models::Cell::CELL_NO_VALUE;
+	LPARAM cellValue = (LPARAM)L"-";
 	for (unsigned int i = 0; i < models::Board::NUMBER_OF_ROWS; i++) {
 		for (unsigned int j = 0; j < models::Board::NUMBER_OF_COLUMNS; j++) {
-			cellValue = models::Game::instance()->getValue(i, j);
-			// TODO Improve this, poner una sola llamada a SendMessage!
-			if (cellValue != models::Cell::CELL_NO_VALUE) {
-				SendMessage(handleBoard[(i * models::Board::NUMBER_OF_ROWS) + j],WM_SETTEXT,0, (LPARAM)std::to_string(cellValue).c_str());
+			cellValue = (LPARAM)L"-";
+			if (models::Game::instance()->getValue(i, j) != models::Cell::CELL_NO_VALUE) {
+				cellValue = (LPARAM)std::to_string(models::Game::instance()->getValue(i, j)).c_str();
 			}
-			else {
-				SendMessage(handleBoard[(i * models::Board::NUMBER_OF_ROWS) + j],WM_SETTEXT,0, (LPARAM)L"-");
-			}
-
+			SendMessage(handleBoard[(i * models::Board::NUMBER_OF_ROWS) + j],WM_SETTEXT,0, cellValue);
 		}
 	}
 }
