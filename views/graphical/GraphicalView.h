@@ -50,6 +50,10 @@ public:
 	static const unsigned int CELL_EIGHT;
 	static const unsigned int LEFT_MARGIN;
 	static const unsigned int TOP_MARGIN;
+	static const unsigned int BUTTON_WIDTH;
+	static const unsigned int BUTTON_EIGHT;
+	static const unsigned int BUTTON_VERTICAL;
+	static const unsigned int BUTTON_SEPARATION;
 
 private:
 	utils::WinApp * winApp;

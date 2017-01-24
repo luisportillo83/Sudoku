@@ -33,6 +33,7 @@ void NewView::interact(controllers::NewController * newController) {
 	SendMessage(hWndComboBox, CB_SETCURSEL, (WPARAM)2, (LPARAM)0);
 	*/
 
+	// TODO Fix this! State ya es NEW!!!
 	if (models::Game::instance()->getState() == models::State::PLAY) {
 		// TODO Preguntar si quieres partida nueva y perder la actual o no
 		std::cout << "Partida en juego!" << std::endl;
