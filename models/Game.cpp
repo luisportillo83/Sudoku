@@ -30,6 +30,17 @@ bool Game::isGameFinished() {
 	return false;
 }
 
+bool Game::isGameOnGoing() {
+	for (int i = 0; i < Board::NUMBER_OF_ROWS; i++) {
+		for (int j = 0; j < Board::NUMBER_OF_COLUMNS; j++) {
+			if (board->getValue(i, j) != Cell::CELL_NO_VALUE) {
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
 State::StateValues Game::getState() {
 	return state.getState();
 }
