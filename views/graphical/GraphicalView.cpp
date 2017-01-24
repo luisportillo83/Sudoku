@@ -55,19 +55,15 @@ LRESULT CALLBACK MainWndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam) 
 			DefWindowProc(hWnd, Msg, wParam, lParam);
 			break;
 		case HANDLE_NEW_GAME:
-			//assert(models::Game::instance()->getState() == models::State::INITIAL);
 			models::Game::instance()->setState(models::State::NEW);
 			break;
 		case HANDLE_LOAD_GAME:
-			assert(models::Game::instance()->getState() == models::State::PLAY);
 			models::Game::instance()->setState(models::State::LOAD);
 			break;
 		case HANDLE_SAVE_GAME:
-			assert(models::Game::instance()->getState() == models::State::PLAY);
 			models::Game::instance()->setState(models::State::SAVE);
 			break;
 		case HANDLE_ABANDON_GAME:
-			assert(models::Game::instance()->getState() == models::State::PLAY);
 			models::Game::instance()->setState(models::State::ABANDON);
 			break;
 		}

@@ -1,5 +1,6 @@
 #include <windows.h>
 #include <CommCtrl.h>
+#include <iostream>
 
 #include "NewView.h"
 
@@ -13,7 +14,7 @@ NewView::NewView(utils::WinMainParameters * winMainParameters, BoardView * board
 void NewView::interact(controllers::NewController * newController) {
 	//MessageBox(HWND(), "NewView", "NewView", MB_OK);
 
-	// TODO ComboBox, put this in utils??
+	/* TODO ComboBox, put this in utils??
 
 	int xpos = 100;            // Horizontal position of the window.
 	int ypos = 100;            // Vertical position of the window.
@@ -30,7 +31,14 @@ void NewView::interact(controllers::NewController * newController) {
 	SendMessage(hWndComboBox,(UINT) CB_ADDSTRING,(WPARAM) 0,(LPARAM) L"hernandez");
 
 	SendMessage(hWndComboBox, CB_SETCURSEL, (WPARAM)2, (LPARAM)0);
+	*/
 
+	if (models::Game::instance()->getState() == models::State::PLAY) {
+		// TODO Preguntar si quieres partida nueva y perder la actual o no
+		std::cout << "Partida en juego!" << std::endl;
+	}
+
+	// TODO Seleccionar LEVEL en un ComboBox o similar
 	newController->start(models::BoardInitializer::EASY);
 	boardView->print();
 }

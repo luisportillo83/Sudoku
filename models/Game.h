@@ -12,7 +12,6 @@ public:
 	static Game * instance();
 
 	void createNewGame(BoardInitializer::DifficultyLevel difficultyLevel);
-	bool isGameOnGoing();
 	bool isGameFinished();
 	void setValue(unsigned int row, unsigned int column, unsigned int value);
 	State::StateValues getState();
