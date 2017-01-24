@@ -10,9 +10,10 @@ class Board {
 public:
 	Board();
 	void setValue(unsigned int row, unsigned int column, unsigned int value);
-	void clearCell(unsigned int row, unsigned int column);
 	unsigned int getValue(unsigned int row, unsigned int column);
 	bool canPutValue(unsigned int value, unsigned int row, unsigned int column);
+	void clearBoard();
+	void clearCell(unsigned int row, unsigned int column);
 	bool isCompleted();
 
 	static const unsigned int NUMBER_OF_REGIONS;

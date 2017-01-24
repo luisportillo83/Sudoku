@@ -46,4 +46,8 @@ void Game::setValue(unsigned int row, unsigned int column, unsigned int value) {
 	board->setValue(row, column, value);
 }
 
+void Game::clearBoard() {
+	board->clearBoard();
+}
+
 }

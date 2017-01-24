@@ -8,7 +8,6 @@ namespace views {
 extern HWND handleBoard[81];
 
 BoardView::BoardView() {
-	this->board = NULL;
 }
 
 void BoardView::print() {

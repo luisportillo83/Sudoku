@@ -2,7 +2,8 @@
 
 namespace views {
 
-AbandonView::AbandonView() {
+AbandonView::AbandonView(BoardView * boardView) {
+	this->boardView = boardView;
 }
 
 void AbandonView::interact(controllers::AbandonController * abandonController) {
@@ -14,6 +15,8 @@ void AbandonView::interact(controllers::AbandonController * abandonController) {
 	}
 	abandonController->abandon();
 	*/
+	abandonController->abandon();
+	boardView->print();
 }
 
 }

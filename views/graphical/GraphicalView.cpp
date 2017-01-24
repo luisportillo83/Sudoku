@@ -69,7 +69,6 @@ LRESULT CALLBACK MainWndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam) 
 		case HANDLE_ABANDON_GAME:
 			assert(models::Game::instance()->getState() == models::State::PLAY);
 			models::Game::instance()->setState(models::State::ABANDON);
-			exit(0); // TODO remove this, just a test
 			break;
 		}
 		break;
@@ -102,7 +101,7 @@ GraphicalView::GraphicalView(utils::WinMainParameters * winMainParameters) {
 	loadView = new views::LoadView(boardView);
 	continueView = new views::ContinueView();
 	saveView = new views::SaveView(boardView);
-	abandonView = new views::AbandonView();
+	abandonView = new views::AbandonView(boardView);
 }
 
 void GraphicalView::interact(controllers::OperationController * operationController) {

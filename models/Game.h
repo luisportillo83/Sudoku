@@ -17,7 +17,7 @@ public:
 	State::StateValues getState();
 	void setState(State::StateValues newState);
 	unsigned int getValue(unsigned int row, unsigned int column);
-
+	void clearBoard();
 
 private:
 	Game();

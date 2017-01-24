@@ -29,6 +29,14 @@ void Board::clearCell(unsigned int row, unsigned int column) {
 	setValue(row, column, models::Cell::CELL_NO_VALUE);
 }
 
+void Board::clearBoard() {
+	for (unsigned int row = 0; row < Board::NUMBER_OF_ROWS; row++) {
+		for (unsigned int column = 0; column < Board::NUMBER_OF_COLUMNS; column++) {
+			clearCell(row, column);
+		}
+	}
+}
+
 bool Board::canPutValue(unsigned int value, unsigned int row, unsigned int column) {
 	return (!isValueInColumn(value, column) &&
 			(!isValueinRow(value, row) &&

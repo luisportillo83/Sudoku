@@ -1,8 +1,8 @@
 #ifndef VIEWS_CONSOLE_BOARDVIEW_H_
 #define VIEWS_CONSOLE_BOARDVIEW_H_
 
-#include "../../controllers/GameController.h"
 #include "../../models/Board.h"
+#include "../../models/Game.h"
 
 namespace views {
 
@@ -10,9 +10,6 @@ class BoardView {
 public:
 	BoardView();
 	void print();
-
-private:
-	models::Board * board;
 };
 
 }
