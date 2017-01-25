@@ -68,10 +68,11 @@ LRESULT CALLBACK MainWndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam) 
 				}
 			}
 
-			if (models::Game::instance()->isGameFinished()) {
+			if ((models::Game::instance()->getState() == models::State::PLAY) and models::Game::instance()->isGameFinished()) {
 				std::cout << "Game FINISHED!" << std::endl;
 			}
 			DefWindowProc(hWnd, Msg, wParam, lParam);
+
 			break;
 		case HANDLE_NEW_GAME:
 			models::Game::instance()->setState(models::State::NEW);
