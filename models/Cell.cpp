@@ -5,6 +5,7 @@ namespace models {
 
 const unsigned int Cell::CELL_MAX_VALUE = 9;
 const unsigned int Cell::CELL_NO_VALUE = 0;
+const char * Cell::CELL_NO_VALUE_CHARACTER = "";
 
 Cell::Cell() {
 	value = Cell::CELL_NO_VALUE;

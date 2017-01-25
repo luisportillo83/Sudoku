@@ -55,7 +55,21 @@ LRESULT CALLBACK MainWndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam) 
 	case WM_COMMAND:
 		switch (LOWORD(wParam)) {
 		case HANDLE_BOARD:
-			// TODO check game is finished?
+			// update game's board with window's board
+			char cellCharacters[2];
+			for (unsigned int i = 0; i < models::Board::NUMBER_OF_ROWS; i++) {
+				for (unsigned int j = 0; j < models::Board::NUMBER_OF_COLUMNS; j++) {
+					GetWindowText(handleBoard[(models::Board::NUMBER_OF_ROWS * i) + j], cellCharacters, 2);
+					if (!strcmp(cellCharacters, models::Cell::CELL_NO_VALUE_CHARACTER)) {
+						// TODO update cell
+					}
+				}
+			}
+
+			if (models::Game::instance()->isGameFinished()) {
+				// TODO sacar mensaje de juego terminado :-)
+				std::cout << "Game FINISHED!" << std::endl;
+			}
 			DefWindowProc(hWnd, Msg, wParam, lParam);
 			break;
 		case HANDLE_NEW_GAME:

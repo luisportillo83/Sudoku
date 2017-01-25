@@ -11,6 +11,7 @@ public:
 
 	static const unsigned int CELL_MAX_VALUE;
 	static const unsigned int CELL_NO_VALUE;
+	static const char * CELL_NO_VALUE_CHARACTER;
 
 protected:
 	unsigned int value;
