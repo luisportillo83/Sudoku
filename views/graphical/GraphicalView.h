@@ -48,6 +48,7 @@ public:
 	static unsigned int WINDOW_EIGHT;
 	static const unsigned int CELL_WIDTH;
 	static const unsigned int CELL_EIGHT;
+	static const unsigned int CELL_SEPARATION;
 	static const unsigned int LEFT_MARGIN;
 	static const unsigned int TOP_MARGIN;
 	static const unsigned int BUTTON_WIDTH;

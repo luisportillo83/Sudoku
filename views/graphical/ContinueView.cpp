@@ -1,3 +1,4 @@
+#include <iostream>
 #include "ContinueView.h"
 
 namespace views {
@@ -6,7 +7,6 @@ ContinueView::ContinueView() {
 }
 
 void ContinueView::interact(controllers::ContinueController * continueController) {
-
 	std::vector<char> opcionesPartidaNuevaORecuperar = {'y', 'n'};
 
 	/*
@@ -17,6 +17,8 @@ void ContinueView::interact(controllers::ContinueController * continueController
 		continueController->exit();
 	}
 	*/
+	std::cout << "ContinueView" << std::endl;
+	exit(0);
 }
 
 }
