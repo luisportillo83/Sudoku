@@ -9,8 +9,15 @@ void LoadController::accept(OperationControllerVisitor * operationControllerVisi
 
 void LoadController::load() {
 	assert(models::Game::instance()->getState() == models::State::LOAD);
-	// Load game
+	// TODO Load game
+	models::Game::instance()->clearBoard();
 	models::Game::instance()->setState(models::State::PLAY);
 }
+
+void LoadController::continuePlaying() {
+	assert(models::Game::instance()->getState() == models::State::LOAD);
+	models::Game::instance()->setState(models::State::PLAY);
+}
+
 
 }

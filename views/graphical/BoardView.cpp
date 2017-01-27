@@ -4,7 +4,7 @@
 
 namespace views {
 
-// TODO Improve this
+// TODO Improve this - Magic number!
 extern HWND handleBoard[81];
 
 BoardView::BoardView() {

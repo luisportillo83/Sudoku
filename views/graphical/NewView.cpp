@@ -1,7 +1,4 @@
 #include <windows.h>
-#include <CommCtrl.h>
-#include <iostream>
-
 #include "NewView.h"
 
 namespace views {

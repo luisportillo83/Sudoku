@@ -10,6 +10,7 @@ class LoadController: public OperationController {
 public:
 	void accept(OperationControllerVisitor * operationControllerVisitor);
 	void load();
+	void continuePlaying();
 };
 
 }
