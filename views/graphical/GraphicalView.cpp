@@ -1,4 +1,3 @@
-#include <iostream>
 #include <cassert>
 #include <windows.h>
 #include "GraphicalView.h"
@@ -58,15 +57,7 @@ LRESULT CALLBACK MainWndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam) 
 		switch (LOWORD(wParam)) {
 		case HANDLE_BOARD:
 			// update game's board with window's board
-			char cellCharacters[2];
-			for (unsigned int i = 0; i < models::Board::NUMBER_OF_ROWS; i++) {
-				for (unsigned int j = 0; j < models::Board::NUMBER_OF_COLUMNS; j++) {
-					GetWindowText(handleBoard[(models::Board::NUMBER_OF_ROWS * i) + j], cellCharacters, 2);
-					if (strcmp(cellCharacters, models::Cell::CELL_NO_VALUE_CHARACTER)) {
-						models::Game::instance()->setValue(i, j, atoi(cellCharacters));
-					}
-				}
-			}
+			(new BoardView)->updateBoard();
 
 			if ((models::Game::instance()->getState() == models::State::PLAY) and models::Game::instance()->isGameFinished()) {
 				MessageBox(NULL, "CONGRATULATIONS! YOU WIN!", "SUDOKU", NULL);

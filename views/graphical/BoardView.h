@@ -10,6 +10,7 @@ class BoardView {
 public:
 	BoardView();
 	void print();
+	void updateBoard();
 };
 
 }
