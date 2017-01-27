@@ -69,8 +69,7 @@ LRESULT CALLBACK MainWndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam) 
 			}
 
 			if ((models::Game::instance()->getState() == models::State::PLAY) and models::Game::instance()->isGameFinished()) {
-				std::cout << "Game FINISHED!" << std::endl;
-				//MessageBox(hWnd, "CONGRATULATIONS! YOU WIN!", NULL, NULL);
+				MessageBox(NULL, "CONGRATULATIONS! YOU WIN!", "SUDOKU", NULL);
 			}
 			DefWindowProc(hWnd, Msg, wParam, lParam);
 
