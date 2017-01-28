@@ -30,7 +30,14 @@ void BoardInitializer::initialize(Board * board, DifficultyLevel difficultyLevel
 }
 
 unsigned int BoardInitializer::numberOfEmptyCellsInBoard(DifficultyLevel difficultyLevel) {
-	return (BoardInitializer::INITIAL_NUMBER_OF_CELLS_TO_REMOVE - (difficultyLevel * BoardInitializer::NUMBER_OF_CELLS_TO_REMOVE_WITH_EVERY_LEVEL));
+	unsigned int numberOfEmptyCellsInBoard = 0;
+	if (difficultyLevel == BoardInitializer::EASY) {
+		numberOfEmptyCellsInBoard = BoardInitializer::INITIAL_NUMBER_OF_CELLS_TO_REMOVE;
+	}
+	else if (difficultyLevel == BoardInitializer::HARD) {
+		numberOfEmptyCellsInBoard = BoardInitializer::INITIAL_NUMBER_OF_CELLS_TO_REMOVE - BoardInitializer::NUMBER_OF_CELLS_TO_REMOVE_WITH_EVERY_LEVEL;
+	}
+	return numberOfEmptyCellsInBoard;
 }
 
 void BoardInitializer::removeCellsInBoardForLevel(Board * board, DifficultyLevel difficultyLevel) {

@@ -9,7 +9,6 @@ class BoardInitializer {
 public:
 	enum DifficultyLevel {
 		EASY = 0,
-		MEDIUM,
 		HARD
 	};
 	static void initialize(Board * board, DifficultyLevel difficultyLevel);

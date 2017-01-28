@@ -15,9 +15,16 @@ void NewView::interact(controllers::NewController * newController) {
 			return;
 		}
 	}
-	// TODO Seleccionar LEVEL en un ComboBox o similar?
-	// MessageBox(HWND(), "Selecciona el nivel de dificultad", "New Game", MB_OK);
-	newController->start(models::BoardInitializer::EASY);
+
+	models::BoardInitializer::DifficultyLevel difficultyLevel;
+	if (IDYES == MessageBox(HWND(), "Eres principiante?", "New Game", MB_YESNO)) {
+		difficultyLevel = models::BoardInitializer::EASY;
+	}
+	else{
+		difficultyLevel = models::BoardInitializer::HARD;
+	}
+
+	newController->start(difficultyLevel);
 	boardView->print();
 }
 
