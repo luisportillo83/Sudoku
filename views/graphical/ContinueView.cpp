@@ -1,23 +1,20 @@
+#include <windows.h>
 #include "ContinueView.h"
 
 namespace views {
 
-ContinueView::ContinueView() {
+ContinueView::ContinueView(BoardView * boardView) {
+	this->boardView = boardView;
 }
 
 void ContinueView::interact(controllers::ContinueController * continueController) {
-	std::vector<char> opcionesPartidaNuevaORecuperar = {'y', 'n'};
-
-	// TODO
-	/*
-	if ('y' == utils::SingleCharOption::instance()->read("Quieres continuar jugando? (y/n) ", opcionesPartidaNuevaORecuperar)) {
+	if (IDYES == MessageBox(HWND(), "¿Quieres continuar jugando?", "Continue Game", MB_YESNO)) {
 		continueController->continuePlaying();
+		boardView->print();
 	}
 	else {
 		continueController->exit();
 	}
-	*/
-	continueController->exit();
 }
 
 }

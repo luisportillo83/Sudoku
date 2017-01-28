@@ -9,8 +9,9 @@ namespace controllers {
 class AbandonController: public OperationController {
 public:
 	void accept(OperationControllerVisitor * operationControllerVisitor);
-	void save(std::string savedGameName);
+	void save();
 	void abandon();
+	void continueCurrentGame();
 };
 
 }

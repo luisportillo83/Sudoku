@@ -1,3 +1,4 @@
+#include <windows.h>
 #include "AbandonView.h"
 
 namespace views {
@@ -8,17 +9,18 @@ AbandonView::AbandonView(BoardView * boardView) {
 
 void AbandonView::interact(controllers::AbandonController * abandonController) {
 	if (models::Game::instance()->isGameOnGoing()) {
-		// TODO Preguntar si quieres guardar partida en curso o no o cancelar el abandonar
-	}
+		if (IDYES == MessageBox(HWND(), "¿Quieres guardar la partida actual?", "Abondon Game", MB_YESNO)) {
+			abandonController->save();
+		}
 
-	/* TODO
-	std::vector<char> opcionesGuardarPartidaEnCurso = {'y', 'n'};
-	if ('y' == utils::SingleCharOption::instance()->read("Quieres guardar la partida en curso? (y/n) ", opcionesGuardarPartidaEnCurso)) {
-		std::string savedGameName =	utils::IO::instance()->readString("Dame el nombre de la partida a guardar: ");
-		abandonController->save(savedGameName);
-	}	*/
-	abandonController->abandon();
-	boardView->print();
+		if (IDYES == MessageBox(HWND(), "¿Quieres abandonar la partida actual?", "Abondon Game", MB_YESNO)) {
+			abandonController->abandon();
+			boardView->print();
+		}
+		else {
+			abandonController->continueCurrentGame();
+		}
+	}
 }
 
 }

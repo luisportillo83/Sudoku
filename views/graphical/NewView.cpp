@@ -17,7 +17,7 @@ void NewView::interact(controllers::NewController * newController) {
 	}
 
 	// TODO Seleccionar LEVEL en un ComboBox o similar?
-	MessageBox(HWND(), "Selecciona el nivel de dificultad", "New Game", MB_OK);
+	// MessageBox(HWND(), "Selecciona el nivel de dificultad", "New Game", MB_OK);
 	newController->start(models::BoardInitializer::EASY);
 	boardView->print();
 }

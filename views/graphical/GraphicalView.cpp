@@ -1,4 +1,5 @@
 #include <cassert>
+#include <iostream>
 #include <windows.h>
 #include "GraphicalView.h"
 
@@ -41,23 +42,24 @@ LRESULT CALLBACK MainWndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam) 
 		}
 		handleNewGame = CreateWindowExW(NULL,L"BUTTON",L"New", WS_TABSTOP|WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,
 			GraphicalView::LEFT_MARGIN, GraphicalView::BUTTON_VERTICAL, GraphicalView::BUTTON_WIDTH, GraphicalView::BUTTON_EIGHT,
-			hWnd,(HMENU)HANDLE_NEW_GAME, GetModuleHandle(NULL), NULL);
+			hWnd, (HMENU)HANDLE_NEW_GAME, GetModuleHandle(NULL), NULL);
 		handleLoadGame = CreateWindowExW(NULL,L"BUTTON",L"Load", WS_TABSTOP|WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,
 			GraphicalView::LEFT_MARGIN + GraphicalView::BUTTON_WIDTH + GraphicalView::BUTTON_SEPARATION, GraphicalView::BUTTON_VERTICAL, GraphicalView::BUTTON_WIDTH, GraphicalView::BUTTON_EIGHT,
-			hWnd,(HMENU)HANDLE_LOAD_GAME, GetModuleHandle(NULL), NULL);
+			hWnd, (HMENU)HANDLE_LOAD_GAME, GetModuleHandle(NULL), NULL);
 		handleSaveGame = CreateWindowExW(NULL,L"BUTTON",L"Save", WS_TABSTOP|WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,
 			GraphicalView::LEFT_MARGIN + 2 * (GraphicalView::BUTTON_WIDTH + GraphicalView::BUTTON_SEPARATION), GraphicalView::BUTTON_VERTICAL, GraphicalView::BUTTON_WIDTH, GraphicalView::BUTTON_EIGHT,
-			hWnd,(HMENU)HANDLE_SAVE_GAME, GetModuleHandle(NULL), NULL);
+			hWnd, (HMENU)HANDLE_SAVE_GAME, GetModuleHandle(NULL), NULL);
 		handleAbandonGame = CreateWindowExW(NULL,L"BUTTON",L"Abandon", WS_TABSTOP|WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,
 			GraphicalView::LEFT_MARGIN + 3 * (GraphicalView::BUTTON_WIDTH + GraphicalView::BUTTON_SEPARATION), GraphicalView::BUTTON_VERTICAL, GraphicalView::BUTTON_WIDTH, GraphicalView::BUTTON_EIGHT,
-			hWnd,(HMENU)HANDLE_ABANDON_GAME, GetModuleHandle(NULL), NULL);
+			hWnd, (HMENU)HANDLE_ABANDON_GAME, GetModuleHandle(NULL), NULL);
 		break;
 
 	case WM_COMMAND:
 		switch (LOWORD(wParam)) {
 		case HANDLE_BOARD:
 			// update game's board with window's board
-			(new BoardView)->updateBoard();
+			// TODO this update causes problems!
+			//(new BoardView)->updateBoard();
 
 			if ((models::Game::instance()->getState() == models::State::PLAY) and models::Game::instance()->isGameFinished()) {
 				MessageBox(NULL, "CONGRATULATIONS! YOU WIN!", "SUDOKU", NULL);
@@ -106,7 +108,7 @@ GraphicalView::GraphicalView(utils::WinMainParameters * winMainParameters) {
 	views::BoardView * boardView = new views::BoardView();
 	newView = new views::NewView(winMainParameters, boardView);
 	loadView = new views::LoadView(boardView);
-	continueView = new views::ContinueView();
+	continueView = new views::ContinueView(boardView);
 	saveView = new views::SaveView(boardView);
 	abandonView = new views::AbandonView(boardView);
 }

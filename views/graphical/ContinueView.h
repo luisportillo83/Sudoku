@@ -2,13 +2,16 @@
 #define VIEWS_CONTINUEVIEW_H_
 
 #include "../../controllers/ContinueController.h"
+#include "BoardView.h"
 
 namespace views {
 
 class ContinueView {
 public:
-	ContinueView();
+	ContinueView(BoardView * boardView);
 	void interact(controllers::ContinueController * continueController);
+private:
+	BoardView * boardView;
 };
 
 }
