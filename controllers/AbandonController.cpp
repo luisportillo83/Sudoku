@@ -16,10 +16,7 @@ void AbandonController::save() {
 
 void AbandonController::abandon() {
 	assert(models::Game::instance()->getState() == models::State::ABANDON);
-	models::Game::instance()->clearBoard();
-	// TODO Put FINAL state to see if player wants to play new game or exit completely
-	// models::Game::instance()->setState(models::State::FINAL);
-	models::Game::instance()->setState(models::State::PLAY);
+	models::Game::instance()->setState(models::State::FINAL);
 }
 
 void AbandonController::continueCurrentGame() {

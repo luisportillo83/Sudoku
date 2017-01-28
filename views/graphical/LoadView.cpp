@@ -11,14 +11,10 @@ void LoadView::interact(controllers::LoadController * loadController) {
 	if (models::Game::instance()->isGameOnGoing()) {
 		if (IDNO == MessageBox(HWND(), "¿Quieres cargar una partida antigua y abandonar la actual?", "Load Game", MB_YESNO)) {
 			loadController->continuePlaying();
-		}
-		else {
-			loadController->load();
+			return;
 		}
 	}
-	else {
-		loadController->load();
-	}
+	loadController->load();
 	boardView->print();
 }
 

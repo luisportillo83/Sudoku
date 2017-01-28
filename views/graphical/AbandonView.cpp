@@ -9,11 +9,11 @@ AbandonView::AbandonView(BoardView * boardView) {
 
 void AbandonView::interact(controllers::AbandonController * abandonController) {
 	if (models::Game::instance()->isGameOnGoing()) {
-		if (IDYES == MessageBox(HWND(), "¿Quieres guardar la partida actual?", "Abondon Game", MB_YESNO)) {
+		if (IDYES == MessageBox(HWND(), "¿Quieres guardar la partida actual?", "Abandon Game", MB_YESNO)) {
 			abandonController->save();
 		}
 
-		if (IDYES == MessageBox(HWND(), "¿Quieres abandonar la partida actual?", "Abondon Game", MB_YESNO)) {
+		if (IDYES == MessageBox(HWND(), "¿Quieres abandonar la partida actual?", "Abandon Game", MB_YESNO)) {
 			abandonController->abandon();
 			boardView->print();
 		}

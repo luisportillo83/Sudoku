@@ -13,4 +13,9 @@ void NewController::start(models::BoardInitializer::DifficultyLevel difficultyLe
 	models::Game::instance()->createNewGame(models::BoardInitializer::EASY);
 }
 
+void NewController::continueCurrentGame() {
+	assert(models::Game::instance()->getState() == models::State::NEW);
+	models::Game::instance()->setState(models::State::PLAY);
+}
+
 }

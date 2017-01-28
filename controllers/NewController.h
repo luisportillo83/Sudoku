@@ -11,6 +11,8 @@ class NewController: public OperationController {
 public:
 	void accept(OperationControllerVisitor * operationControllerVisitor);
 	void start(models::BoardInitializer::DifficultyLevel difficultyLevel);
+	// TODO put 	void continueCurrentGame() un nivel arriba?
+	void continueCurrentGame();
 };
 
 }

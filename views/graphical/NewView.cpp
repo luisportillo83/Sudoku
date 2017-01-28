@@ -10,12 +10,11 @@ NewView::NewView(utils::WinMainParameters * winMainParameters, BoardView * board
 
 void NewView::interact(controllers::NewController * newController) {
 	if (models::Game::instance()->isGameOnGoing()) {
-		if (IDYES == MessageBox(HWND(), "¿Quieres empezar una partida nueva y abandonar la actual?", "New Game", MB_YESNO)) {
-			// TODO
-			MessageBox(HWND(), "YES!", "New Game", MB_OK);
+		if (IDNO == MessageBox(HWND(), "¿Quieres empezar una partida nueva y abandonar la actual?", "New Game", MB_YESNO)) {
+			newController->continueCurrentGame();
+			return;
 		}
 	}
-
 	// TODO Seleccionar LEVEL en un ComboBox o similar?
 	// MessageBox(HWND(), "Selecciona el nivel de dificultad", "New Game", MB_OK);
 	newController->start(models::BoardInitializer::EASY);
