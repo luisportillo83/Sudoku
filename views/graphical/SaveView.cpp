@@ -1,3 +1,4 @@
+#include <windows.h>
 #include "SaveView.h"
 
 namespace views {
@@ -8,21 +9,10 @@ SaveView::SaveView(BoardView * boardView) {
 
 void SaveView::interact(controllers::SaveController * saveController) {
 	if (models::Game::instance()->isGameOnGoing()) {
-		/* TODO
-		std::string savedGameName =	utils::IO::instance()->readString("Dame el nombre de la partida a guardar: ");
-		saveController->save(savedGameName);
-
-		std::vector<char> opcionesSeguirJugandoONo = {'y', 'n'};
-		if ('y' == utils::SingleCharOption::instance()->read("Quieres seguir la partida? (y/n) ", opcionesSeguirJugandoONo)) {
-			saveController->continuePlay();
-			boardView->print(saveController);
-		}
-		else {
-			saveController->exitPlay();
-		}
-		*/
-		saveController->continuePlay();
+		saveController->save();
+		MessageBox(HWND(), "Game saved", "Save Game", MB_OK);
 	}
+	saveController->continueCurrentGame();
 }
 
 }

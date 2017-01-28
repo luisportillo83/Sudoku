@@ -7,17 +7,15 @@ void SaveController::accept(OperationControllerVisitor * operationControllerVisi
 	operationControllerVisitor->visit(this);
 }
 
-void SaveController::save(std::string savedGameName) {
+void SaveController::save() {
 	assert(models::Game::instance()->getState() == models::State::SAVE);
-	// utils::IO::instance()->writeLine("Partida " + savedGameName + " guardada correctamente");
+	// TODO
+	// Save en un fichero cuyo nombre es la fecha, hora, minuto y segundos?
 }
 
-void SaveController::continuePlay() {
+void SaveController::continueCurrentGame() {
+	assert(models::Game::instance()->getState() == models::State::SAVE);
 	models::Game::instance()->setState(models::State::PLAY);
-}
-
-void SaveController::exitPlay() {
-	models::Game::instance()->setState(models::State::FINAL);
 }
 
 }
