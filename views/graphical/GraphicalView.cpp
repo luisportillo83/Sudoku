@@ -57,9 +57,10 @@ LRESULT CALLBACK MainWndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam) 
 	case WM_COMMAND:
 		switch (LOWORD(wParam)) {
 		case HANDLE_BOARD:
-			// update game's board with window's board
 			// TODO this update causes problems!
-			//(new BoardView)->updateBoard();
+			if (models::Game::instance()->getState() == models::State::PLAY) {
+				(new BoardView)->updateBoard();
+			}
 
 			if ((models::Game::instance()->getState() == models::State::PLAY) and models::Game::instance()->isGameFinished()) {
 				MessageBox(NULL, "CONGRATULATIONS! YOU WIN!", "SUDOKU", NULL);
