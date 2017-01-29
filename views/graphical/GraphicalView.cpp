@@ -106,7 +106,7 @@ GraphicalView::GraphicalView(utils::WinMainParameters * winMainParameters) {
 	gameView = new views::GameView();
 
 	views::BoardView * boardView = new views::BoardView();
-	newView = new views::NewView(winMainParameters, boardView);
+	newView = new views::NewView(boardView);
 	loadView = new views::LoadView(boardView);
 	continueView = new views::ContinueView(boardView);
 	saveView = new views::SaveView(boardView);

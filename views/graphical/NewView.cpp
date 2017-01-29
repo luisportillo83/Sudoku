@@ -3,8 +3,7 @@
 
 namespace views {
 
-NewView::NewView(utils::WinMainParameters * winMainParameters, BoardView * boardView) {
-	this->winMainParameters = winMainParameters;
+NewView::NewView(BoardView * boardView) {
 	this->boardView = boardView;
 }
 
