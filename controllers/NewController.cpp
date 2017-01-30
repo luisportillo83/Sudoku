@@ -10,7 +10,7 @@ void NewController::accept(OperationControllerVisitor * operationControllerVisit
 
 void NewController::start(models::BoardInitializer::DifficultyLevel difficultyLevel) {
 	assert(models::Game::instance()->getState() == models::State::NEW);
-	models::Game::instance()->createNewGame(models::BoardInitializer::EASY);
+	models::Game::instance()->createNewGame(difficultyLevel);
 }
 
 void NewController::continueCurrentGame() {
