@@ -12,6 +12,7 @@ public:
 	void interact(controllers::LoadController * loadController);
 private:
 	BoardView * boardView;
+	static LPCTSTR WINDOW_NAME;
 };
 
 }

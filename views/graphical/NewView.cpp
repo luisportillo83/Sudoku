@@ -3,6 +3,8 @@
 
 namespace views {
 
+LPCTSTR NewView::WINDOW_NAME = "New Game";
+
 NewView::NewView(BoardView * boardView) {
 	this->boardView = boardView;
 }
@@ -16,7 +18,7 @@ void NewView::interact(controllers::NewController * newController) {
 	}
 
 	models::BoardInitializer::DifficultyLevel difficultyLevel;
-	if (IDYES == MessageBox(HWND(), "Eres principiante?", "New Game", MB_YESNO)) {
+	if (IDYES == MessageBox(HWND(), "Eres principiante?", NewView::WINDOW_NAME, MB_YESNO)) {
 		difficultyLevel = models::BoardInitializer::EASY;
 	}
 	else{

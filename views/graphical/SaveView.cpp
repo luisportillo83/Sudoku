@@ -3,6 +3,8 @@
 
 namespace views {
 
+LPCTSTR SaveView::WINDOW_NAME = "Save Game";
+
 SaveView::SaveView(BoardView * boardView) {
 	this->boardView = boardView;
 }
@@ -10,7 +12,7 @@ SaveView::SaveView(BoardView * boardView) {
 void SaveView::interact(controllers::SaveController * saveController) {
 	if (models::Game::instance()->isGameOnGoing()) {
 		saveController->save();
-		MessageBox(HWND(), "Game saved", "Save Game", MB_OK);
+		MessageBox(HWND(), "Game saved", SaveView::WINDOW_NAME, MB_OK);
 	}
 	saveController->continueCurrentGame();
 }
