@@ -26,12 +26,15 @@ void BoardView::print() {
 
 void BoardView::updateBoard() {
 	char cellCharacters[2];
+	unsigned int cellValue = models::Cell::CELL_NO_VALUE;
 	for (unsigned int i = 0; i < models::Board::NUMBER_OF_ROWS; i++) {
 		for (unsigned int j = 0; j < models::Board::NUMBER_OF_COLUMNS; j++) {
 			GetWindowText(handleBoard[(models::Board::NUMBER_OF_ROWS * i) + j], cellCharacters, 2);
+			cellValue = models::Cell::CELL_NO_VALUE;
 			if (strcmp(cellCharacters, models::Cell::CELL_NO_VALUE_CHARACTER)) {
-				models::Game::instance()->setValue(i, j, atoi(cellCharacters));
+				cellValue = atoi(cellCharacters);
 			}
+			models::Game::instance()->setValue(i, j, cellValue);
 		}
 	}
 }

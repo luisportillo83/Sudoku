@@ -59,7 +59,7 @@ LRESULT CALLBACK MainWndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam) 
 		case HANDLE_BOARD:
 			// TODO this update causes problems!
 			if (models::Game::instance()->getState() == models::State::PLAY) {
-				(new BoardView)->updateBoard();
+				//TODO (new BoardView)->updateBoard();
 			}
 
 			if ((models::Game::instance()->getState() == models::State::PLAY) and models::Game::instance()->isGameFinished()) {
