@@ -3,6 +3,8 @@
 
 #include <string.h>
 #include <iostream>
+#include <fstream>
+#include "../models/Game.h"
 
 namespace utils {
 

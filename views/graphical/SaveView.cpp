@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <windows.h>
 #include "SaveView.h"
 
@@ -11,8 +12,14 @@ SaveView::SaveView(BoardView * boardView) {
 
 void SaveView::interact(controllers::SaveController * saveController) {
 	if (models::Game::instance()->isGameOnGoing()) {
-		saveController->save();
-		MessageBox(HWND(), "Game saved", SaveView::WINDOW_NAME, MB_OK);
+		time_t timeNow = time(0);
+		std::string fileName = ctime(&timeNow);
+		fileName.erase(std::remove_if(fileName.begin(), fileName.end(), isspace),fileName.end());
+		fileName.erase(std::remove_if(fileName.begin(), fileName.end(), ispunct),fileName.end());
+		fileName.append(".sudoku");
+		saveController->save(fileName);
+		// TODO Hay alguna manera de poner el nombre del fichero en el MessageBox?
+		MessageBox(HWND(), "Game saved!", SaveView::WINDOW_NAME, MB_OK);
 	}
 	saveController->continueCurrentGame();
 }

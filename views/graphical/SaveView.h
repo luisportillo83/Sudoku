@@ -3,6 +3,7 @@
 
 #include "../../controllers/SaveController.h"
 #include "BoardView.h"
+#include <ctime>
 
 namespace views {
 
