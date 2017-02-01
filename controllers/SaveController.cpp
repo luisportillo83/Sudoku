@@ -9,8 +9,9 @@ void SaveController::accept(OperationControllerVisitor * operationControllerVisi
 
 void SaveController::save() {
 	assert(models::Game::instance()->getState() == models::State::SAVE);
-	// TODO
-	// Save en un fichero cuyo nombre es la fecha, hora, minuto y segundos?
+	// TODO Save en un fichero cuyo nombre es la fecha, hora, minuto y segundos?
+	std::string fileName = "luis";
+	utils::SudokuFile::save(fileName);
 }
 
 void SaveController::continueCurrentGame() {

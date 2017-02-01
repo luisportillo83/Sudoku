@@ -90,9 +90,18 @@ bool Board::isColumnCompleted(unsigned int column) {
 bool Board::isRegionCompleted(unsigned int region) {
 	std::vector<Cell *> regionToCheck;
 
-	for (unsigned int i = 0; i < Board::NUMBER_OF_ROWS; i++) {
-		// TODO
-		regionToCheck.push_back(cells.at(region));
+	// TODO Poner un solo FOR dentro de un FOR
+
+	for (unsigned int i = 0; i < sqrt(Board::NUMBER_OF_ROWS); i++) {
+		//regionToCheck.push_back(cells.at(i + (???)));
+	}
+
+	for (unsigned int i = 0; i < sqrt(Board::NUMBER_OF_ROWS); i++) {
+		//regionToCheck.push_back(cells.at(i + (???)));
+	}
+
+	for (unsigned int i = 0; i < sqrt(Board::NUMBER_OF_ROWS); i++) {
+		// regionToCheck.push_back(cells.at(i + (???)));
 	}
 	return true;
 	// TODO return hasAllNumbers(regionToCheck);

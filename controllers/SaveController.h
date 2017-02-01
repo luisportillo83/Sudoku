@@ -3,6 +3,7 @@
 
 #include "OperationController.h"
 #include "OperationControllerVisitor.h"
+#include "../utils/SudokuFile.h"
 
 namespace controllers {
 
