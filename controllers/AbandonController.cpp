@@ -1,6 +1,5 @@
 #include <cassert>
 #include <iostream>
-
 #include "AbandonController.h"
 
 namespace controllers {
@@ -9,9 +8,9 @@ void AbandonController::accept(OperationControllerVisitor * operationControllerV
 	operationControllerVisitor->visit(this);
 }
 
-void AbandonController::save() {
+void AbandonController::save(std::string fileName) {
 	assert(models::Game::instance()->getState() == models::State::ABANDON);
-	// TODO save (igual que el de save controller?)
+	utils::SudokuFile::save(fileName);
 }
 
 void AbandonController::abandon() {

@@ -3,6 +3,7 @@
 
 #include "../../controllers/AbandonController.h"
 #include "BoardView.h"
+#include <ctime>
 
 namespace views {
 
@@ -12,6 +13,8 @@ public:
 	void interact(controllers::AbandonController * abandonController);
 private:
 	static LPCTSTR WINDOW_NAME;
+	static unsigned int MAX_MESSAGEBOX_TEXT_SIZE;
+	std::string getFileName();
 };
 
 }
