@@ -14,6 +14,8 @@ public:
 private:
 	BoardView * boardView;
 	static LPCTSTR WINDOW_NAME;
+	static unsigned int MAX_MESSAGEBOX_TEXT_SIZE;
+	std::string getFileName();
 };
 
 }
