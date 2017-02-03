@@ -24,16 +24,16 @@ LRESULT CALLBACK MainWndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam) 
 		views::BoardView::instance()->print();
 		handleNewGame = CreateWindowExW(NULL,L"BUTTON",L"New", WS_TABSTOP|WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,
 			BoardView::LEFT_MARGIN, GraphicalView::BUTTON_VERTICAL, GraphicalView::BUTTON_WIDTH, GraphicalView::BUTTON_EIGHT,
-			hWnd, (HMENU)HANDLE_NEW_GAME, GetModuleHandle(NULL), NULL);
+			hWnd, (HMENU)GraphicalView::HANDLE_NEW_GAME, GetModuleHandle(NULL), NULL);
 		handleLoadGame = CreateWindowExW(NULL,L"BUTTON",L"Load", WS_TABSTOP|WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,
 			BoardView::LEFT_MARGIN + GraphicalView::BUTTON_WIDTH + GraphicalView::BUTTON_SEPARATION, GraphicalView::BUTTON_VERTICAL, GraphicalView::BUTTON_WIDTH, GraphicalView::BUTTON_EIGHT,
-			hWnd, (HMENU)HANDLE_LOAD_GAME, GetModuleHandle(NULL), NULL);
+			hWnd, (HMENU)GraphicalView::HANDLE_LOAD_GAME, GetModuleHandle(NULL), NULL);
 		handleSaveGame = CreateWindowExW(NULL,L"BUTTON",L"Save", WS_TABSTOP|WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,
 			BoardView::LEFT_MARGIN + 2 * (GraphicalView::BUTTON_WIDTH + GraphicalView::BUTTON_SEPARATION), GraphicalView::BUTTON_VERTICAL, GraphicalView::BUTTON_WIDTH, GraphicalView::BUTTON_EIGHT,
-			hWnd, (HMENU)HANDLE_SAVE_GAME, GetModuleHandle(NULL), NULL);
+			hWnd, (HMENU)GraphicalView::HANDLE_SAVE_GAME, GetModuleHandle(NULL), NULL);
 		handleAbandonGame = CreateWindowExW(NULL,L"BUTTON",L"Abandon", WS_TABSTOP|WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,
 			BoardView::LEFT_MARGIN + 3 * (GraphicalView::BUTTON_WIDTH + GraphicalView::BUTTON_SEPARATION), GraphicalView::BUTTON_VERTICAL, GraphicalView::BUTTON_WIDTH, GraphicalView::BUTTON_EIGHT,
-			hWnd, (HMENU)HANDLE_ABANDON_GAME, GetModuleHandle(NULL), NULL);
+			hWnd, (HMENU)GraphicalView::HANDLE_ABANDON_GAME, GetModuleHandle(NULL), NULL);
 		break;
 
 	case WM_COMMAND:
@@ -50,16 +50,16 @@ LRESULT CALLBACK MainWndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam) 
 			DefWindowProc(hWnd, Msg, wParam, lParam);
 
 			break;
-		case HANDLE_NEW_GAME:
+		case GraphicalView::HANDLE_NEW_GAME:
 			models::Game::instance()->setState(models::State::NEW);
 			break;
-		case HANDLE_LOAD_GAME:
+		case GraphicalView::HANDLE_LOAD_GAME:
 			models::Game::instance()->setState(models::State::LOAD);
 			break;
-		case HANDLE_SAVE_GAME:
+		case GraphicalView::HANDLE_SAVE_GAME:
 			models::Game::instance()->setState(models::State::SAVE);
 			break;
-		case HANDLE_ABANDON_GAME:
+		case GraphicalView::HANDLE_ABANDON_GAME:
 			models::Game::instance()->setState(models::State::ABANDON);
 			break;
 		}

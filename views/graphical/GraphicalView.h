@@ -21,12 +21,6 @@
 #include "../../utils/MainWnd.h"
 #include "../../models/Game.h"
 
-// TODO Poner esto como parte de la clase?
-#define HANDLE_NEW_GAME 110
-#define HANDLE_LOAD_GAME 111
-#define HANDLE_SAVE_GAME 112
-#define HANDLE_ABANDON_GAME 113
-
 namespace views {
 
 class GraphicalView: public View {
@@ -49,6 +43,11 @@ public:
 	static const unsigned int BUTTON_EIGHT;
 	static const unsigned int BUTTON_VERTICAL;
 	static const unsigned int BUTTON_SEPARATION;
+
+	static constexpr const unsigned int HANDLE_NEW_GAME = 110;
+	static constexpr const unsigned int HANDLE_LOAD_GAME = 111;
+	static constexpr const unsigned int HANDLE_SAVE_GAME = 112;
+	static constexpr const unsigned int HANDLE_ABANDON_GAME = 113;
 
 private:
 	utils::WinApp * winApp;
