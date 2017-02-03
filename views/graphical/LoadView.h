@@ -8,10 +8,9 @@ namespace views {
 
 class LoadView {
 public:
-	LoadView(BoardView * boardView);
+	LoadView();
 	void interact(controllers::LoadController * loadController);
 private:
-	BoardView * boardView;
 	static LPCTSTR WINDOW_NAME;
 };
 

@@ -8,8 +8,8 @@ namespace views {
 LPCTSTR SaveView::WINDOW_NAME = "Save Game";
 unsigned int SaveView::MAX_MESSAGEBOX_TEXT_SIZE = 100;
 
-SaveView::SaveView(BoardView * boardView) {
-	this->boardView = boardView;
+SaveView::SaveView() {
+
 }
 
 void SaveView::interact(controllers::SaveController * saveController) {

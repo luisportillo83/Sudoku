@@ -9,10 +9,9 @@ namespace views {
 
 class SaveView {
 public:
-	SaveView(BoardView * boardView);
+	SaveView();
 	void interact(controllers::SaveController * saveController);
 private:
-	BoardView * boardView;
 	static LPCTSTR WINDOW_NAME;
 	static unsigned int MAX_MESSAGEBOX_TEXT_SIZE;
 	std::string getFileName();

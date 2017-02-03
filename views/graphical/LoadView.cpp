@@ -5,8 +5,7 @@ namespace views {
 
 LPCTSTR LoadView::WINDOW_NAME = "Load Game";
 
-LoadView::LoadView(BoardView * boardView) {
-	this->boardView = boardView;
+LoadView::LoadView() {
 }
 
 void LoadView::interact(controllers::LoadController * loadController) {
@@ -17,7 +16,7 @@ void LoadView::interact(controllers::LoadController * loadController) {
 		}
 	}
 	loadController->load();
-	boardView->print();
+	views::BoardView::instance()->print();
 }
 
 }

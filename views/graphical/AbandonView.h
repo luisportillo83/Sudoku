@@ -8,10 +8,9 @@ namespace views {
 
 class AbandonView {
 public:
-	AbandonView(BoardView * boardView);
+	AbandonView();
 	void interact(controllers::AbandonController * abandonController);
 private:
-	BoardView * boardView;
 	static LPCTSTR WINDOW_NAME;
 };
 

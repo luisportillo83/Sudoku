@@ -8,10 +8,9 @@ namespace views {
 
 class ContinueView {
 public:
-	ContinueView(BoardView * boardView);
+	ContinueView();
 	void interact(controllers::ContinueController * continueController);
 private:
-	BoardView * boardView;
 	static LPCTSTR WINDOW_NAME;
 };
 

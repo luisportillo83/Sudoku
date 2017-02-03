@@ -8,10 +8,9 @@ namespace views {
 
 class NewView {
 public:
-	NewView(BoardView * boardView);
+	NewView();
 	void interact(controllers::NewController * newController);
 private:
-	BoardView * boardView;
 	static LPCTSTR WINDOW_NAME;
 };
 

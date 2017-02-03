@@ -22,7 +22,6 @@
 #include "../../models/Game.h"
 
 // TODO Poner esto como parte de la clase?
-#define HANDLE_BOARD 101
 #define HANDLE_NEW_GAME 110
 #define HANDLE_LOAD_GAME 111
 #define HANDLE_SAVE_GAME 112
@@ -46,11 +45,6 @@ public:
 	static LPCTSTR WINDOW_NAME;
 	static unsigned int WINDOW_WIDTH;
 	static unsigned int WINDOW_EIGHT;
-	static const unsigned int CELL_WIDTH;
-	static const unsigned int CELL_EIGHT;
-	static const unsigned int CELL_SEPARATION;
-	static const unsigned int LEFT_MARGIN;
-	static const unsigned int TOP_MARGIN;
 	static const unsigned int BUTTON_WIDTH;
 	static const unsigned int BUTTON_EIGHT;
 	static const unsigned int BUTTON_VERTICAL;

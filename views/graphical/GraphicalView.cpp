@@ -9,19 +9,10 @@ char GraphicalView::CLASS_NAME[] = "SudokuClassName";
 LPCTSTR GraphicalView::WINDOW_NAME = "Sudoku";
 unsigned int GraphicalView::WINDOW_WIDTH = 330;
 unsigned int GraphicalView::WINDOW_EIGHT = 405;
-const unsigned int GraphicalView::CELL_WIDTH = 25;
-const unsigned int GraphicalView::CELL_EIGHT = 25;
-const unsigned int GraphicalView::CELL_SEPARATION = 5;
-const unsigned int GraphicalView::LEFT_MARGIN = 25;
-const unsigned int GraphicalView::TOP_MARGIN = 25 ;
 const unsigned int GraphicalView::BUTTON_EIGHT = 35;
 const unsigned int GraphicalView::BUTTON_WIDTH = 65;
 const unsigned int GraphicalView::BUTTON_VERTICAL = 310;
 const unsigned int GraphicalView::BUTTON_SEPARATION = 2;
-
-// TODO tiene que ser global???
-//HWND handleBoard[models::Board::NUMBER_OF_CELLS];
-HWND handleBoard[81];
 
 LRESULT CALLBACK MainWndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam) {
 	//HWND handleBoard[models::Board::NUMBER_OF_CELLS];
@@ -29,34 +20,25 @@ LRESULT CALLBACK MainWndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam) 
 
 	switch(Msg)	{
 	case WM_CREATE:
-		for (unsigned int i = 0; i < models::Board::NUMBER_OF_ROWS; i++) {
-			for (unsigned int j = 0; j < models::Board::NUMBER_OF_COLUMNS; j++) {
-				handleBoard[(models::Board::NUMBER_OF_ROWS * i) + j] = CreateWindowExW(WS_EX_CLIENTEDGE, L"EDIT", L"",
-						WS_TABSTOP|WS_CHILD|WS_VISIBLE|SS_CENTER|ES_NUMBER,
-						GraphicalView::LEFT_MARGIN + ((GraphicalView::CELL_WIDTH + GraphicalView::CELL_SEPARATION) * j),
-						GraphicalView::TOP_MARGIN + ((GraphicalView::CELL_EIGHT + GraphicalView::CELL_SEPARATION) * i),
-						GraphicalView::CELL_WIDTH, GraphicalView::CELL_EIGHT, hWnd, (HMENU)HANDLE_BOARD, GetModuleHandle(NULL), NULL);
-				SendMessage(handleBoard[(models::Board::NUMBER_OF_ROWS * i) + j], EM_LIMITTEXT, 1, 0);
-				(new BoardView)->print();
-			}
-		}
+		views::BoardView::instance()->create(hWnd);
+		views::BoardView::instance()->print();
 		handleNewGame = CreateWindowExW(NULL,L"BUTTON",L"New", WS_TABSTOP|WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,
-			GraphicalView::LEFT_MARGIN, GraphicalView::BUTTON_VERTICAL, GraphicalView::BUTTON_WIDTH, GraphicalView::BUTTON_EIGHT,
+			BoardView::LEFT_MARGIN, GraphicalView::BUTTON_VERTICAL, GraphicalView::BUTTON_WIDTH, GraphicalView::BUTTON_EIGHT,
 			hWnd, (HMENU)HANDLE_NEW_GAME, GetModuleHandle(NULL), NULL);
 		handleLoadGame = CreateWindowExW(NULL,L"BUTTON",L"Load", WS_TABSTOP|WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,
-			GraphicalView::LEFT_MARGIN + GraphicalView::BUTTON_WIDTH + GraphicalView::BUTTON_SEPARATION, GraphicalView::BUTTON_VERTICAL, GraphicalView::BUTTON_WIDTH, GraphicalView::BUTTON_EIGHT,
+			BoardView::LEFT_MARGIN + GraphicalView::BUTTON_WIDTH + GraphicalView::BUTTON_SEPARATION, GraphicalView::BUTTON_VERTICAL, GraphicalView::BUTTON_WIDTH, GraphicalView::BUTTON_EIGHT,
 			hWnd, (HMENU)HANDLE_LOAD_GAME, GetModuleHandle(NULL), NULL);
 		handleSaveGame = CreateWindowExW(NULL,L"BUTTON",L"Save", WS_TABSTOP|WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,
-			GraphicalView::LEFT_MARGIN + 2 * (GraphicalView::BUTTON_WIDTH + GraphicalView::BUTTON_SEPARATION), GraphicalView::BUTTON_VERTICAL, GraphicalView::BUTTON_WIDTH, GraphicalView::BUTTON_EIGHT,
+			BoardView::LEFT_MARGIN + 2 * (GraphicalView::BUTTON_WIDTH + GraphicalView::BUTTON_SEPARATION), GraphicalView::BUTTON_VERTICAL, GraphicalView::BUTTON_WIDTH, GraphicalView::BUTTON_EIGHT,
 			hWnd, (HMENU)HANDLE_SAVE_GAME, GetModuleHandle(NULL), NULL);
 		handleAbandonGame = CreateWindowExW(NULL,L"BUTTON",L"Abandon", WS_TABSTOP|WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,
-			GraphicalView::LEFT_MARGIN + 3 * (GraphicalView::BUTTON_WIDTH + GraphicalView::BUTTON_SEPARATION), GraphicalView::BUTTON_VERTICAL, GraphicalView::BUTTON_WIDTH, GraphicalView::BUTTON_EIGHT,
+			BoardView::LEFT_MARGIN + 3 * (GraphicalView::BUTTON_WIDTH + GraphicalView::BUTTON_SEPARATION), GraphicalView::BUTTON_VERTICAL, GraphicalView::BUTTON_WIDTH, GraphicalView::BUTTON_EIGHT,
 			hWnd, (HMENU)HANDLE_ABANDON_GAME, GetModuleHandle(NULL), NULL);
 		break;
 
 	case WM_COMMAND:
 		switch (LOWORD(wParam)) {
-		case HANDLE_BOARD:
+		case BoardView::HANDLE_BOARD:
 			// TODO this update causes problems!
 			if (models::Game::instance()->getState() == models::State::PLAY) {
 				//TODO (new BoardView)->updateBoard();
@@ -105,13 +87,11 @@ GraphicalView::GraphicalView(utils::WinMainParameters * winMainParameters) {
 	window.Show();
 
 	gameView = new views::GameView();
-
-	views::BoardView * boardView = new views::BoardView();
-	newView = new views::NewView(boardView);
-	loadView = new views::LoadView(boardView);
-	continueView = new views::ContinueView(boardView);
-	saveView = new views::SaveView(boardView);
-	abandonView = new views::AbandonView(boardView);
+	newView = new views::NewView();
+	loadView = new views::LoadView();
+	continueView = new views::ContinueView();
+	saveView = new views::SaveView();
+	abandonView = new views::AbandonView();
 }
 
 void GraphicalView::interact(controllers::OperationController * operationController) {

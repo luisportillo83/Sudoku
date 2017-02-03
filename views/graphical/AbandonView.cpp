@@ -5,8 +5,7 @@ namespace views {
 
 LPCTSTR AbandonView::WINDOW_NAME = "Abandon Game";
 
-AbandonView::AbandonView(BoardView * boardView) {
-	this->boardView = boardView;
+AbandonView::AbandonView() {
 }
 
 void AbandonView::interact(controllers::AbandonController * abandonController) {
@@ -17,7 +16,7 @@ void AbandonView::interact(controllers::AbandonController * abandonController) {
 
 		if (IDYES == MessageBox(HWND(), "¿Quieres abandonar la partida actual?", AbandonView::WINDOW_NAME, MB_YESNO)) {
 			abandonController->abandon();
-			boardView->print();
+			views::BoardView::instance()->print();
 		}
 		else {
 			abandonController->continueCurrentGame();

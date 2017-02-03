@@ -5,8 +5,7 @@ namespace views {
 
 LPCTSTR NewView::WINDOW_NAME = "New Game";
 
-NewView::NewView(BoardView * boardView) {
-	this->boardView = boardView;
+NewView::NewView() {
 }
 
 void NewView::interact(controllers::NewController * newController) {
@@ -26,7 +25,7 @@ void NewView::interact(controllers::NewController * newController) {
 	}
 
 	newController->start(difficultyLevel);
-	boardView->print();
+	views::BoardView::instance()->print();
 }
 
 }
