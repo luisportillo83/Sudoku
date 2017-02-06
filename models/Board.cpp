@@ -17,6 +17,7 @@ Board::Board() {
 			cells.push_back(new Cell());
 		}
 	}
+	numberChecker = new NumberChecker();
 }
 
 void Board::setValue(unsigned int row, unsigned int column, unsigned int value) {
@@ -51,77 +52,17 @@ unsigned int Board::getValue(unsigned int row, unsigned int column) {
 
 bool Board::isCompleted() {
 	for (unsigned int i = 0; i < Board::NUMBER_OF_ROWS; i++) {
-		if (!isRowCompleted(i)) {
+		if (!numberChecker->isRowCompleted(i)) {
 			return false;
 		}
 	}
 	for (unsigned int i = 0; i < Board::NUMBER_OF_COLUMNS; i++) {
-		if (!isColumnCompleted(i)) {
+		if (!numberChecker->isColumnCompleted(i)) {
 			return false;
 		}
 	}
 	for (unsigned int i = 0; i < Board::NUMBER_OF_REGIONS; i++) {
-		if (!isRegionCompleted(i)) {
-			return false;
-		}
-	}
-	return true;
-}
-
-bool Board::isRowCompleted(unsigned int row) {
-	std::vector<Cell *> rowToCheck;
-
-	for (unsigned int i = 0; i < Board::NUMBER_OF_ROWS; i++) {
-		rowToCheck.push_back(cells.at((row * Board::NUMBER_OF_ROWS) + i));
-	}
-
-	return hasAllNumbers(rowToCheck);
-}
-
-bool Board::isColumnCompleted(unsigned int column) {
-	std::vector<Cell *> columnToCheck;
-
-	for (unsigned int i = 0; i < Board::NUMBER_OF_ROWS; i++) {
-		columnToCheck.push_back(cells.at((i * Board::NUMBER_OF_ROWS) + column));
-	}
-	return hasAllNumbers(columnToCheck);
-}
-
-bool Board::isRegionCompleted(unsigned int region) {
-	std::vector<Cell *> regionToCheck;
-
-	// TODO Poner un solo FOR dentro de un FOR
-
-	for (unsigned int i = 0; i < sqrt(Board::NUMBER_OF_ROWS); i++) {
-		//regionToCheck.push_back(cells.at(i + (???)));
-	}
-
-	for (unsigned int i = 0; i < sqrt(Board::NUMBER_OF_ROWS); i++) {
-		//regionToCheck.push_back(cells.at(i + (???)));
-	}
-
-	for (unsigned int i = 0; i < sqrt(Board::NUMBER_OF_ROWS); i++) {
-		// regionToCheck.push_back(cells.at(i + (???)));
-	}
-	return true;
-	// TODO return hasAllNumbers(regionToCheck);
-}
-
-bool Board::hasAllNumbers(std::vector<Cell *> cells) {
-	assert(cells.size() == Board::NUMBER_OF_ROWS);
-	std::vector<unsigned int> cellValues;
-
-	for (unsigned int i = 0; i < cells.size(); i++) {
-		if (cells.at(i)->getValue() == Cell::CELL_NO_VALUE) {
-			return false;
-		}
-		cellValues.push_back(cells.at(i)->getValue());
-	}
-
-	std::sort(cellValues.begin(), cellValues.end());
-
-	for (unsigned int i = 0; i < cellValues.size(); i++) {
-		if (cellValues.at(i) != (i + 1)) {
+		if (!numberChecker->isRegionCompleted(i)) {
 			return false;
 		}
 	}
