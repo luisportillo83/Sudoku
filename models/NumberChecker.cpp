@@ -1,69 +1,51 @@
+#include <cassert>
+#include <algorithm>
+#include <math.h>
 #include "NumberChecker.h"
 
 namespace models {
 
-NumberChecker::NumberChecker() {
-
-}
-
-bool NumberChecker::isRowCompleted(unsigned int row) {
-	return false;
-}
-
-bool NumberChecker::isColumnCompleted(unsigned int column) {
-	return false;
-}
-
-bool NumberChecker::isRegionCompleted(unsigned int region) {
-	return false;
-}
-
-bool NumberChecker::hasAllNumbers(std::vector<Cell *> cells) {
-	return false;
-}
-
-/*
-bool Board::isRowCompleted(unsigned int row) {
+bool NumberChecker::isRowCompleted(unsigned int row, std::vector<Cell *> cells) {
 	std::vector<Cell *> rowToCheck;
 
-	for (unsigned int i = 0; i < Board::NUMBER_OF_ROWS; i++) {
-		rowToCheck.push_back(cells.at((row * Board::NUMBER_OF_ROWS) + i));
+	for (unsigned int i = 0; i < sqrt(cells.size()); i++) {
+		rowToCheck.push_back(cells.at((row * sqrt(cells.size())) + i));
 	}
 
 	return hasAllNumbers(rowToCheck);
 }
 
-bool Board::isColumnCompleted(unsigned int column) {
+bool NumberChecker::isColumnCompleted(unsigned int column, std::vector<Cell *> cells) {
 	std::vector<Cell *> columnToCheck;
 
-	for (unsigned int i = 0; i < Board::NUMBER_OF_ROWS; i++) {
-		columnToCheck.push_back(cells.at((i * Board::NUMBER_OF_ROWS) + column));
+	for (unsigned int i = 0; i < sqrt(cells.size()); i++) {
+		columnToCheck.push_back(cells.at((i * sqrt(cells.size())) + column));
 	}
 	return hasAllNumbers(columnToCheck);
 }
 
-bool Board::isRegionCompleted(unsigned int region) {
+bool NumberChecker::isRegionCompleted(unsigned int region, std::vector<Cell *> cells) {
 	std::vector<Cell *> regionToCheck;
 
 	// TODO Poner un solo FOR dentro de un FOR
 
-	for (unsigned int i = 0; i < sqrt(Board::NUMBER_OF_ROWS); i++) {
+	for (unsigned int i = 0; i < sqrt(sqrt(cells.size())); i++) {
 		//regionToCheck.push_back(cells.at(i + (???)));
 	}
 
-	for (unsigned int i = 0; i < sqrt(Board::NUMBER_OF_ROWS); i++) {
+	for (unsigned int i = 0; i < sqrt(sqrt(cells.size())); i++) {
 		//regionToCheck.push_back(cells.at(i + (???)));
 	}
 
-	for (unsigned int i = 0; i < sqrt(Board::NUMBER_OF_ROWS); i++) {
+	for (unsigned int i = 0; i < sqrt(sqrt(cells.size())); i++) {
 		// regionToCheck.push_back(cells.at(i + (???)));
 	}
 	return true;
 	// TODO return hasAllNumbers(regionToCheck);
 }
 
-bool Board::hasAllNumbers(std::vector<Cell *> cells) {
-	assert(cells.size() == Board::NUMBER_OF_ROWS);
+bool NumberChecker::hasAllNumbers(std::vector<Cell *> cells) {
+	assert(cells.size() == sqrt(cells.size()));
 	std::vector<unsigned int> cellValues;
 
 	for (unsigned int i = 0; i < cells.size(); i++) {
@@ -82,6 +64,5 @@ bool Board::hasAllNumbers(std::vector<Cell *> cells) {
 	}
 	return true;
 }
-*/
 
 }

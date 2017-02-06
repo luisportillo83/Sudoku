@@ -1,7 +1,4 @@
 #include <cassert>
-#include <algorithm>
-#include <math.h>
-#include <iostream>
 #include "Board.h"
 
 namespace models {
@@ -52,17 +49,17 @@ unsigned int Board::getValue(unsigned int row, unsigned int column) {
 
 bool Board::isCompleted() {
 	for (unsigned int i = 0; i < Board::NUMBER_OF_ROWS; i++) {
-		if (!numberChecker->isRowCompleted(i)) {
+		if (!numberChecker->isRowCompleted(i, cells)) {
 			return false;
 		}
 	}
 	for (unsigned int i = 0; i < Board::NUMBER_OF_COLUMNS; i++) {
-		if (!numberChecker->isColumnCompleted(i)) {
+		if (!numberChecker->isColumnCompleted(i, cells)) {
 			return false;
 		}
 	}
 	for (unsigned int i = 0; i < Board::NUMBER_OF_REGIONS; i++) {
-		if (!numberChecker->isRegionCompleted(i)) {
+		if (!numberChecker->isRegionCompleted(i, cells)) {
 			return false;
 		}
 	}
