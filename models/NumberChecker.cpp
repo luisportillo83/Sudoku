@@ -45,7 +45,6 @@ bool NumberChecker::isRegionCompleted(unsigned int region, std::vector<Cell *> c
 }
 
 bool NumberChecker::hasAllNumbers(std::vector<Cell *> cells) {
-	assert(cells.size() == sqrt(cells.size()));
 	std::vector<unsigned int> cellValues;
 
 	for (unsigned int i = 0; i < cells.size(); i++) {
