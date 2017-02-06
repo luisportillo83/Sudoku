@@ -1,6 +1,3 @@
-#include <cassert>
-#include <iostream>
-#include <windows.h>
 #include "BoardView.h"
 
 namespace views {

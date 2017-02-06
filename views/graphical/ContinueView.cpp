@@ -1,15 +1,14 @@
-#include <windows.h>
 #include "ContinueView.h"
 
 namespace views {
 
-LPCTSTR ContinueView::WINDOW_NAME = "Continue Game";
+std::string ContinueView::WINDOW_NAME = "Continue Game";
 
 ContinueView::ContinueView() {
 }
 
 void ContinueView::interact(controllers::ContinueController * continueController) {
-	if (IDYES == MessageBox(HWND(), "¿Quieres continuar jugando?", ContinueView::WINDOW_NAME, MB_YESNO)) {
+	if (utils::Message::YesNoOptions::YES == utils::Message::printYesNoMessage("¿Quieres continuar jugando?", ContinueView::WINDOW_NAME)) {
 		continueController->continuePlaying();
 		views::BoardView::instance()->print();
 	}

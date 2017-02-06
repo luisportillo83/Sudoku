@@ -1,11 +1,10 @@
 #include <algorithm>
-#include <windows.h>
 #include <stdio.h>
 #include "AbandonView.h"
 
 namespace views {
 
-LPCTSTR AbandonView::WINDOW_NAME = "Abandon Game";
+std::string AbandonView::WINDOW_NAME = "Abandon Game";
 unsigned int AbandonView::MAX_MESSAGEBOX_TEXT_SIZE = 100;
 
 AbandonView::AbandonView() {
@@ -13,15 +12,15 @@ AbandonView::AbandonView() {
 
 void AbandonView::interact(controllers::AbandonController * abandonController) {
 	if (models::Game::instance()->isGameOnGoing()) {
-		if (IDYES == MessageBox(HWND(), "¿Quieres guardar la partida actual?", AbandonView::WINDOW_NAME, MB_YESNO)) {
+		if (utils::Message::YesNoOptions::YES == utils::Message::printYesNoMessage("¿Quieres guardar la partida actual?", AbandonView::WINDOW_NAME)) {
 			std::string fileName = getFileName();
 			abandonController->save(fileName);
 			char messageBoxText[AbandonView::MAX_MESSAGEBOX_TEXT_SIZE];
 			sprintf(messageBoxText, "Game saved in file:\n%s", fileName.c_str());
-			MessageBox(HWND(), messageBoxText, AbandonView::WINDOW_NAME, MB_OK);
+			utils::Message::printOkMessage(messageBoxText, AbandonView::WINDOW_NAME);
 		}
 
-		if (IDYES == MessageBox(HWND(), "¿Quieres abandonar la partida actual?", AbandonView::WINDOW_NAME, MB_YESNO)) {
+		if (utils::Message::YesNoOptions::YES == utils::Message::printYesNoMessage("¿Quieres abandonar la partida actual?", AbandonView::WINDOW_NAME)) {
 			abandonController->abandon();
 			views::BoardView::instance()->print();
 		}

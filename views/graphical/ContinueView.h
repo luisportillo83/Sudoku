@@ -1,6 +1,8 @@
 #ifndef VIEWS_CONTINUEVIEW_H_
 #define VIEWS_CONTINUEVIEW_H_
 
+#include <string>
+#include "../../utils/Message.h"
 #include "../../controllers/ContinueController.h"
 #include "BoardView.h"
 
@@ -11,7 +13,7 @@ public:
 	ContinueView();
 	void interact(controllers::ContinueController * continueController);
 private:
-	static LPCTSTR WINDOW_NAME;
+	static std::string WINDOW_NAME;
 };
 
 }
