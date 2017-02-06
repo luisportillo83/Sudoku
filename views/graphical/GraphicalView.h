@@ -37,6 +37,7 @@ public:
 
 	static char CLASS_NAME[];
 	static LPCTSTR WINDOW_NAME;
+	static LPCTSTR WINNING_MESSAGE;
 	static unsigned int WINDOW_WIDTH;
 	static unsigned int WINDOW_EIGHT;
 	static const unsigned int BUTTON_WIDTH;

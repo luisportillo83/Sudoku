@@ -7,6 +7,7 @@ namespace views {
 
 char GraphicalView::CLASS_NAME[] = "SudokuClassName";
 LPCTSTR GraphicalView::WINDOW_NAME = "Sudoku";
+LPCTSTR GraphicalView::WINNING_MESSAGE = "CONGRATULATIONS! YOU WIN!";
 unsigned int GraphicalView::WINDOW_WIDTH = 330;
 unsigned int GraphicalView::WINDOW_EIGHT = 405;
 const unsigned int GraphicalView::BUTTON_EIGHT = 35;
@@ -15,23 +16,20 @@ const unsigned int GraphicalView::BUTTON_VERTICAL = 310;
 const unsigned int GraphicalView::BUTTON_SEPARATION = 2;
 
 LRESULT CALLBACK MainWndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam) {
-	//HWND handleBoard[models::Board::NUMBER_OF_CELLS];
-	HWND handleNewGame, handleLoadGame, handleAbandonGame, handleSaveGame;
-
 	switch(Msg)	{
 	case WM_CREATE:
 		views::BoardView::instance()->create(hWnd);
 		views::BoardView::instance()->print();
-		handleNewGame = CreateWindowExW(NULL,L"BUTTON",L"New", WS_TABSTOP|WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,
+		CreateWindowExW(NULL,L"BUTTON",L"New", WS_TABSTOP|WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,
 			BoardView::LEFT_MARGIN, GraphicalView::BUTTON_VERTICAL, GraphicalView::BUTTON_WIDTH, GraphicalView::BUTTON_EIGHT,
 			hWnd, (HMENU)GraphicalView::HANDLE_NEW_GAME, GetModuleHandle(NULL), NULL);
-		handleLoadGame = CreateWindowExW(NULL,L"BUTTON",L"Load", WS_TABSTOP|WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,
+		CreateWindowExW(NULL,L"BUTTON",L"Load", WS_TABSTOP|WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,
 			BoardView::LEFT_MARGIN + GraphicalView::BUTTON_WIDTH + GraphicalView::BUTTON_SEPARATION, GraphicalView::BUTTON_VERTICAL, GraphicalView::BUTTON_WIDTH, GraphicalView::BUTTON_EIGHT,
 			hWnd, (HMENU)GraphicalView::HANDLE_LOAD_GAME, GetModuleHandle(NULL), NULL);
-		handleSaveGame = CreateWindowExW(NULL,L"BUTTON",L"Save", WS_TABSTOP|WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,
+		CreateWindowExW(NULL,L"BUTTON",L"Save", WS_TABSTOP|WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,
 			BoardView::LEFT_MARGIN + 2 * (GraphicalView::BUTTON_WIDTH + GraphicalView::BUTTON_SEPARATION), GraphicalView::BUTTON_VERTICAL, GraphicalView::BUTTON_WIDTH, GraphicalView::BUTTON_EIGHT,
 			hWnd, (HMENU)GraphicalView::HANDLE_SAVE_GAME, GetModuleHandle(NULL), NULL);
-		handleAbandonGame = CreateWindowExW(NULL,L"BUTTON",L"Abandon", WS_TABSTOP|WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,
+		CreateWindowExW(NULL,L"BUTTON",L"Abandon", WS_TABSTOP|WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,
 			BoardView::LEFT_MARGIN + 3 * (GraphicalView::BUTTON_WIDTH + GraphicalView::BUTTON_SEPARATION), GraphicalView::BUTTON_VERTICAL, GraphicalView::BUTTON_WIDTH, GraphicalView::BUTTON_EIGHT,
 			hWnd, (HMENU)GraphicalView::HANDLE_ABANDON_GAME, GetModuleHandle(NULL), NULL);
 		break;
@@ -45,7 +43,7 @@ LRESULT CALLBACK MainWndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam) 
 			}
 
 			if ((models::Game::instance()->getState() == models::State::PLAY) and models::Game::instance()->isGameFinished()) {
-				MessageBox(NULL, "CONGRATULATIONS! YOU WIN!", GraphicalView::WINDOW_NAME, NULL);
+				MessageBox(NULL, GraphicalView::WINNING_MESSAGE, GraphicalView::WINDOW_NAME, NULL);
 			}
 			DefWindowProc(hWnd, Msg, wParam, lParam);
 
