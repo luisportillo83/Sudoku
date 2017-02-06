@@ -1,6 +1,8 @@
 #ifndef VIEWS_CONSOLE_NEWVIEW_H_
 #define VIEWS_CONSOLE_NEWVIEW_H_
 
+#include <string>
+#include "../../utils/Message.h"
 #include "../../controllers/NewController.h"
 #include "BoardView.h"
 
@@ -11,7 +13,7 @@ public:
 	NewView();
 	void interact(controllers::NewController * newController);
 private:
-	static LPCTSTR WINDOW_NAME;
+	static std::string WINDOW_NAME;
 };
 
 }
