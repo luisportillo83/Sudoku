@@ -6,6 +6,7 @@
 namespace models {
 
 bool NumberChecker::isRowCompleted(unsigned int row, std::vector<Cell *> cells) {
+	assert(row < sqrt(cells.size()));
 	std::vector<Cell *> rowToCheck;
 
 	for (unsigned int i = 0; i < sqrt(cells.size()); i++) {
@@ -16,6 +17,7 @@ bool NumberChecker::isRowCompleted(unsigned int row, std::vector<Cell *> cells) 
 }
 
 bool NumberChecker::isColumnCompleted(unsigned int column, std::vector<Cell *> cells) {
+	assert(column < sqrt(cells.size()));
 	std::vector<Cell *> columnToCheck;
 
 	for (unsigned int i = 0; i < sqrt(cells.size()); i++) {
