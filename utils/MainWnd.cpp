@@ -26,13 +26,6 @@ void MainWnd::translateAndDispatchMessage(MSG * Msg) {
 	DispatchMessage(Msg);
 }
 
-void MainWnd::xxx() {
-	MSG   Msg;
-	while(utils::MainWnd::getMessage(&Msg)) {
-		utils::MainWnd::translateAndDispatchMessage(&Msg);
-	}
-}
-
 MainWnd::operator HWND() {
 	return windowHandle;
 }
