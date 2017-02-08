@@ -1,5 +1,4 @@
 #include <cassert>
-#include <windows.h>
 #include "NewController.h"
 
 namespace controllers {

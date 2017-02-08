@@ -4,6 +4,8 @@
 #include "../../utils/MainWnd.h"
 #include "GameView.h"
 
+#include <iostream>
+
 namespace views {
 
 GameView::GameView() {
@@ -11,10 +13,9 @@ GameView::GameView() {
 
 void GameView::interact(controllers::MoveController * moveController) {
 	MSG   Msg;
-	while(GetMessage(&Msg, NULL, 0, 0) &&
+	while(utils::MainWnd::getMessage(&Msg) &&
 			(models::Game::instance()->getState() == models::State::INITIAL || models::Game::instance()->getState() == models::State::PLAY)) {
-		TranslateMessage(&Msg);
-		DispatchMessage(&Msg);
+		utils::MainWnd::translateAndDispatchMessage(&Msg);
 	}
 }
 

@@ -17,6 +17,22 @@ bool MainWnd::Show(int dCmdShow) {
 	return (ShowWindow(windowHandle, dCmdShow) && UpdateWindow(windowHandle));
 }
 
+bool MainWnd::getMessage(MSG * Msg) {
+	return GetMessage(Msg, NULL, 0, 0);
+}
+
+void MainWnd::translateAndDispatchMessage(MSG * Msg) {
+	TranslateMessage(Msg);
+	DispatchMessage(Msg);
+}
+
+void MainWnd::xxx() {
+	MSG   Msg;
+	while(utils::MainWnd::getMessage(&Msg)) {
+		utils::MainWnd::translateAndDispatchMessage(&Msg);
+	}
+}
+
 MainWnd::operator HWND() {
 	return windowHandle;
 }

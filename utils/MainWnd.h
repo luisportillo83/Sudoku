@@ -15,6 +15,11 @@ public:
 	bool Show(int dCmdShow = SW_SHOWNORMAL);
 	operator HWND();
 
+	static void xxx();
+	static void getTranslateAndDispatchMessage(bool stopLoop);
+	static void translateAndDispatchMessage(MSG * Msg);
+	static bool getMessage(MSG * Msg);
+
 protected:
 	HWND windowHandle;
 };
