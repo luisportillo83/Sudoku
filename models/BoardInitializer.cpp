@@ -6,9 +6,8 @@
 
 namespace models {
 
-// TODO Put default values back on
-unsigned int BoardInitializer::INITIAL_NUMBER_OF_CELLS_TO_REMOVE = 1; //30;
-unsigned int BoardInitializer::NUMBER_OF_CELLS_TO_REMOVE_WITH_EVERY_LEVEL = 0;//10;
+unsigned int BoardInitializer::INITIAL_NUMBER_OF_CELLS_TO_REMOVE = 5; // TODO, put 50
+unsigned int BoardInitializer::NUMBER_OF_CELLS_TO_REMOVE_WITH_EVERY_LEVEL = 25;
 
 void BoardInitializer::initialize(Board * board, DifficultyLevel difficultyLevel) {
 	std::vector<unsigned int> table;
@@ -35,7 +34,7 @@ unsigned int BoardInitializer::numberOfEmptyCellsInBoard(DifficultyLevel difficu
 		numberOfEmptyCellsInBoard = BoardInitializer::INITIAL_NUMBER_OF_CELLS_TO_REMOVE;
 	}
 	else if (difficultyLevel == BoardInitializer::HARD) {
-		numberOfEmptyCellsInBoard = BoardInitializer::INITIAL_NUMBER_OF_CELLS_TO_REMOVE - BoardInitializer::NUMBER_OF_CELLS_TO_REMOVE_WITH_EVERY_LEVEL;
+		numberOfEmptyCellsInBoard = BoardInitializer::INITIAL_NUMBER_OF_CELLS_TO_REMOVE + BoardInitializer::NUMBER_OF_CELLS_TO_REMOVE_WITH_EVERY_LEVEL;
 	}
 	return numberOfEmptyCellsInBoard;
 }

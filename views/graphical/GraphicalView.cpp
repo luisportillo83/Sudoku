@@ -37,7 +37,6 @@ LRESULT CALLBACK MainWndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam) 
 	case WM_COMMAND:
 		switch (LOWORD(wParam)) {
 		case BoardView::HANDLE_BOARD:
-			// TODO this update causes problems!
 			if (models::Game::instance()->getState() == models::State::PLAY) {
 				//TODO (new BoardView)->updateBoard();
 			}
