@@ -10,7 +10,6 @@ class NumberChecker {
 public:
 	bool isRowCompleted(unsigned int row, std::vector<Cell *> cells);
 	bool isColumnCompleted(unsigned int column, std::vector<Cell *> cells);
-	bool isRegionCompleted(unsigned int region, std::vector<Cell *> cells);
 private:
 	bool hasAllNumbers(std::vector<Cell *> cells);
 };

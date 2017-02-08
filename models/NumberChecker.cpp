@@ -26,26 +26,6 @@ bool NumberChecker::isColumnCompleted(unsigned int column, std::vector<Cell *> c
 	return hasAllNumbers(columnToCheck);
 }
 
-bool NumberChecker::isRegionCompleted(unsigned int region, std::vector<Cell *> cells) {
-	std::vector<Cell *> regionToCheck;
-
-	// TODO Poner un solo FOR dentro de un FOR
-
-	for (unsigned int i = 0; i < sqrt(sqrt(cells.size())); i++) {
-		//regionToCheck.push_back(cells.at(i + (???)));
-	}
-
-	for (unsigned int i = 0; i < sqrt(sqrt(cells.size())); i++) {
-		//regionToCheck.push_back(cells.at(i + (???)));
-	}
-
-	for (unsigned int i = 0; i < sqrt(sqrt(cells.size())); i++) {
-		// regionToCheck.push_back(cells.at(i + (???)));
-	}
-	return true;
-	// TODO return hasAllNumbers(regionToCheck);
-}
-
 bool NumberChecker::hasAllNumbers(std::vector<Cell *> cells) {
 	std::vector<unsigned int> cellValues;
 

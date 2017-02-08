@@ -31,8 +31,8 @@ bool Game::isGameFinished() {
 }
 
 bool Game::isGameOnGoing() {
-	for (int i = 0; i < Board::NUMBER_OF_ROWS; i++) {
-		for (int j = 0; j < Board::NUMBER_OF_COLUMNS; j++) {
+	for (unsigned int i = 0; i < Board::NUMBER_OF_ROWS; i++) {
+		for (unsigned int j = 0; j < Board::NUMBER_OF_COLUMNS; j++) {
 			if (board->getValue(i, j) != Cell::CELL_NO_VALUE) {
 				return true;
 			}

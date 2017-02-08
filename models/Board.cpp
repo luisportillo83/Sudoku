@@ -37,8 +37,7 @@ void Board::clearBoard() {
 
 bool Board::canPutValue(unsigned int value, unsigned int row, unsigned int column) {
 	return (!isValueInColumn(value, column) &&
-			(!isValueinRow(value, row) &&
-			(!isValueInRegion(value, row, column))));
+			(!isValueinRow(value, row)));
 }
 
 unsigned int Board::getValue(unsigned int row, unsigned int column) {
@@ -55,11 +54,6 @@ bool Board::isCompleted() {
 	}
 	for (unsigned int i = 0; i < Board::NUMBER_OF_COLUMNS; i++) {
 		if (!numberChecker->isColumnCompleted(i, cells)) {
-			return false;
-		}
-	}
-	for (unsigned int i = 0; i < Board::NUMBER_OF_REGIONS; i++) {
-		if (!numberChecker->isRegionCompleted(i, cells)) {
 			return false;
 		}
 	}
@@ -81,11 +75,6 @@ bool Board::isValueInColumn(unsigned int value, unsigned int column) {
 			return true;
 		}
 	}
-	return false;
-}
-
-bool Board::isValueInRegion(unsigned int value, unsigned int row, unsigned int column) {
-	// TODO
 	return false;
 }
 

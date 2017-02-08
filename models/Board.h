@@ -28,7 +28,6 @@ private:
 
 	bool isValueinRow(unsigned int value, unsigned int row);
 	bool isValueInColumn(unsigned int value, unsigned int column);
-	bool isValueInRegion(unsigned int value, unsigned int row, unsigned int column);
 };
 
 }
