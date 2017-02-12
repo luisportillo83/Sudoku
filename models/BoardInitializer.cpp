@@ -6,7 +6,7 @@
 
 namespace models {
 
-unsigned int BoardInitializer::INITIAL_NUMBER_OF_CELLS_TO_REMOVE = 5; // TODO, put 50
+unsigned int BoardInitializer::INITIAL_NUMBER_OF_CELLS_TO_REMOVE = 2; // TODO, put 50
 unsigned int BoardInitializer::NUMBER_OF_CELLS_TO_REMOVE_WITH_EVERY_LEVEL = 25;
 
 void BoardInitializer::initialize(Board * board, DifficultyLevel difficultyLevel) {

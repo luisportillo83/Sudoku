@@ -38,7 +38,7 @@ LRESULT CALLBACK MainWndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam) 
 		switch (LOWORD(wParam)) {
 		case BoardView::HANDLE_BOARD:
 			if (models::Game::instance()->getState() == models::State::PLAY) {
-				//TODO (new BoardView)->updateBoard();
+				views::BoardView::instance()->updateBoard();
 			}
 
 			if ((models::Game::instance()->getState() == models::State::PLAY) and models::Game::instance()->isGameFinished()) {

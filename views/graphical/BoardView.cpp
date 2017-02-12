@@ -12,6 +12,7 @@ const unsigned int BoardView::CELL_SEPARATION = 5;
 
 BoardView::BoardView() {
 	handleBoard = new HWND[models::Board::NUMBER_OF_CELLS];
+	automaticUpdateOfCells = false;
 }
 
 BoardView * BoardView::instance() {
@@ -35,30 +36,38 @@ void BoardView::create(HWND hWnd) {
 }
 
 void BoardView::print() {
-	LPARAM cellValue = (LPARAM)models::Cell::CELL_NO_VALUE_CHARACTER;
-	for (unsigned int i = 0; i < models::Board::NUMBER_OF_ROWS; i++) {
-		for (unsigned int j = 0; j < models::Board::NUMBER_OF_COLUMNS; j++) {
-			cellValue = (LPARAM)models::Cell::CELL_NO_VALUE_CHARACTER;
-			if (models::Game::instance()->getValue(i, j) != models::Cell::CELL_NO_VALUE) {
-				cellValue = (LPARAM)std::to_string(models::Game::instance()->getValue(i, j)).c_str();
+	if (!automaticUpdateOfCells) {
+		automaticUpdateOfCells = true;
+		LPARAM cellValue = (LPARAM)models::Cell::CELL_NO_VALUE_CHARACTER;
+			for (unsigned int i = 0; i < models::Board::NUMBER_OF_ROWS; i++) {
+				for (unsigned int j = 0; j < models::Board::NUMBER_OF_COLUMNS; j++) {
+					cellValue = (LPARAM)models::Cell::CELL_NO_VALUE_CHARACTER;
+					if (models::Game::instance()->getValue(i, j) != models::Cell::CELL_NO_VALUE) {
+						cellValue = (LPARAM)std::to_string(models::Game::instance()->getValue(i, j)).c_str();
+					}
+					SendMessage(handleBoard[(i * models::Board::NUMBER_OF_ROWS) + j],WM_SETTEXT,0, cellValue);
+				}
 			}
-			SendMessage(handleBoard[(i * models::Board::NUMBER_OF_ROWS) + j],WM_SETTEXT,0, cellValue);
-		}
+		automaticUpdateOfCells = false;
 	}
 }
 
 void BoardView::updateBoard() {
-	char cellCharacters[2];
-	unsigned int cellValue = models::Cell::CELL_NO_VALUE;
-	for (unsigned int i = 0; i < models::Board::NUMBER_OF_ROWS; i++) {
-		for (unsigned int j = 0; j < models::Board::NUMBER_OF_COLUMNS; j++) {
-			GetWindowText(handleBoard[(models::Board::NUMBER_OF_ROWS * i) + j], cellCharacters, 2);
-			cellValue = models::Cell::CELL_NO_VALUE;
-			if (strcmp(cellCharacters, models::Cell::CELL_NO_VALUE_CHARACTER)) {
-				cellValue = atoi(cellCharacters);
+	if (!automaticUpdateOfCells) {
+		automaticUpdateOfCells = true;
+		char cellCharacters[2];
+		unsigned int cellValue = models::Cell::CELL_NO_VALUE;
+		for (unsigned int i = 0; i < models::Board::NUMBER_OF_ROWS; i++) {
+			for (unsigned int j = 0; j < models::Board::NUMBER_OF_COLUMNS; j++) {
+				GetWindowText(handleBoard[(models::Board::NUMBER_OF_ROWS * i) + j], cellCharacters, 2);
+				cellValue = models::Cell::CELL_NO_VALUE;
+				if (strcmp(cellCharacters, models::Cell::CELL_NO_VALUE_CHARACTER)) {
+					cellValue = atoi(cellCharacters);
+				}
+				models::Game::instance()->setValue(i, j, cellValue);
 			}
-			models::Game::instance()->setValue(i, j, cellValue);
 		}
+		automaticUpdateOfCells = false;
 	}
 }
 

@@ -25,6 +25,8 @@ private:
 	BoardView();
 	static BoardView * boardView;
 	HWND *handleBoard;
+	// TODO Poner un nombre  mejor o incluso hacer una clase en utils para takeMutex() y releaseMutex() ???
+	bool automaticUpdateOfCells;
 };
 
 }
