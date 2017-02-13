@@ -9,6 +9,7 @@ const char * Cell::CELL_NO_VALUE_CHARACTER = "";
 
 Cell::Cell() {
 	value = Cell::CELL_NO_VALUE;
+	changeable = true;
 }
 
 void Cell::setValue(unsigned int value) {
@@ -18,6 +19,18 @@ void Cell::setValue(unsigned int value) {
 
 unsigned int Cell::getValue() {
 	return this->value;
+}
+
+bool Cell::isChangeable() {
+	return changeable;
+}
+
+void Cell::makeChangeable() {
+	changeable = true;
+}
+
+void Cell::makeUnchangeable() {
+	changeable = false;
 }
 
 }

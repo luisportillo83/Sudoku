@@ -8,6 +8,10 @@ public:
 	Cell();
 	void setValue(unsigned int value);
 	unsigned int getValue();
+	bool isChangeable();
+	// TODO improve these two methods
+	void makeChangeable();
+	void makeUnchangeable();
 
 	static const unsigned int CELL_MAX_VALUE;
 	static const unsigned int CELL_NO_VALUE;
@@ -15,6 +19,7 @@ public:
 
 protected:
 	unsigned int value;
+	bool changeable;
 };
 
 }

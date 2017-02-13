@@ -64,6 +64,8 @@ void BoardView::updateBoard() {
 				if (strcmp(cellCharacters, models::Cell::CELL_NO_VALUE_CHARACTER)) {
 					cellValue = atoi(cellCharacters);
 				}
+				// TODO, hacer un game-->canPutValue()
+				// Y si no se puede poner, poner el valor anterior
 				models::Game::instance()->setValue(i, j, cellValue);
 			}
 		}

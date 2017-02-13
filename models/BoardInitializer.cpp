@@ -6,7 +6,7 @@
 
 namespace models {
 
-unsigned int BoardInitializer::NUMBER_OF_CELLS_TO_REMOVE_FROM_BOARD = 25;
+unsigned int BoardInitializer::NUMBER_OF_CELLS_TO_REMOVE_FROM_BOARD = 2; // TODO Put 25
 
 void BoardInitializer::initialize(Board * board, DifficultyLevel difficultyLevel) {
 	std::vector<unsigned int> table;
