@@ -1,7 +1,6 @@
 #ifndef LOGIC_H_
 #define LOGIC_H_
 
-
 #include "controllers/OperationController.h"
 #include "controllers/MoveController.h"
 #include "controllers/NewController.h"
@@ -11,7 +10,6 @@
 #include "controllers/AbandonController.h"
 #include "models/Game.h"
 
-
 class Logic {
 	controllers::MoveController * moveController;
 	controllers::NewController * newController;
@@ -19,7 +17,6 @@ class Logic {
 	controllers::ContinueController * continueController;
 	controllers::SaveController * saveController;
 	controllers::AbandonController * abandonController;
-
 
 public:
 	Logic();

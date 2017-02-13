@@ -33,19 +33,14 @@ LRESULT CALLBACK MainWndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam) 
 			BoardView::LEFT_MARGIN + 3 * (GraphicalView::BUTTON_WIDTH + GraphicalView::BUTTON_SEPARATION), GraphicalView::BUTTON_VERTICAL, GraphicalView::BUTTON_WIDTH, GraphicalView::BUTTON_EIGHT,
 			hWnd, (HMENU)GraphicalView::HANDLE_ABANDON_GAME, GetModuleHandle(NULL), NULL);
 		break;
-
 	case WM_COMMAND:
 		switch (LOWORD(wParam)) {
 		case BoardView::HANDLE_BOARD:
-			if (models::Game::instance()->getState() == models::State::PLAY) {
-				views::BoardView::instance()->updateBoard();
-			}
-
+			views::BoardView::instance()->updateBoard();
 			if ((models::Game::instance()->getState() == models::State::PLAY) and models::Game::instance()->isGameFinished()) {
 				MessageBox(NULL, GraphicalView::WINNING_MESSAGE, GraphicalView::WINDOW_NAME, NULL);
 			}
 			DefWindowProc(hWnd, Msg, wParam, lParam);
-
 			break;
 		case GraphicalView::HANDLE_NEW_GAME:
 			models::Game::instance()->setState(models::State::NEW);
@@ -70,7 +65,6 @@ LRESULT CALLBACK MainWndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam) 
 	default:
 		return DefWindowProc(hWnd, Msg, wParam, lParam);
 	}
-
 	return 0;
 }
 
