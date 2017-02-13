@@ -12,6 +12,7 @@ class LoadView {
 public:
 	LoadView();
 	void interact(controllers::LoadController * loadController);
+	std::string getFileName();
 private:
 	static std::string WINDOW_NAME;
 };

@@ -16,4 +16,9 @@ void SudokuFile::save(std::string fileName) {
 	sudokuFile.close();
 }
 
+void SudokuFile::load(std::string fileName) {
+	models::Game::instance()->clearBoard();
+}
+
+
 }

@@ -13,8 +13,7 @@ public:
 	};
 	static void initialize(Board * board, DifficultyLevel difficultyLevel);
 private:
-	static unsigned int INITIAL_NUMBER_OF_CELLS_TO_REMOVE;
-	static unsigned int NUMBER_OF_CELLS_TO_REMOVE_WITH_EVERY_LEVEL;
+	static unsigned int NUMBER_OF_CELLS_TO_REMOVE_FROM_BOARD;
 	static unsigned int numberOfEmptyCellsInBoard(DifficultyLevel difficultyLevel);
 	static void removeCellsInBoardForLevel(Board * board, DifficultyLevel difficultyLevel);
 };

@@ -7,9 +7,9 @@ void LoadController::accept(OperationControllerVisitor * operationControllerVisi
 	operationControllerVisitor->visit(this);
 }
 
-void LoadController::load() {
+void LoadController::load(std::string fileName) {
 	assert(models::Game::instance()->getState() == models::State::LOAD);
-	// TODO Load game
+	utils::SudokuFile::load(fileName);
 	models::Game::instance()->setState(models::State::PLAY);
 }
 

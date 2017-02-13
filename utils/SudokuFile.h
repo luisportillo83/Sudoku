@@ -11,6 +11,7 @@ namespace utils {
 class SudokuFile {
 public:
 	static void save(std::string fileName);
+	static void load(std::string fileName);
 };
 
 }

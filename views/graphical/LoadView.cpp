@@ -14,8 +14,13 @@ void LoadView::interact(controllers::LoadController * loadController) {
 			return;
 		}
 	}
-	loadController->load();
+	std::string fileName = getFileName();
+	loadController->load(fileName);
 	views::BoardView::instance()->print();
+}
+
+std::string LoadView::getFileName() {
+	return "test.sudoku";
 }
 
 }

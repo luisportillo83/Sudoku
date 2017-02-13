@@ -12,7 +12,7 @@ const unsigned int BoardView::CELL_SEPARATION = 5;
 
 BoardView::BoardView() {
 	handleBoard = new HWND[models::Board::NUMBER_OF_CELLS];
-	automaticUpdateOfCells = false;
+	automaticUpdateOfCellsGoingOn = false;
 }
 
 BoardView * BoardView::instance() {
@@ -36,8 +36,8 @@ void BoardView::create(HWND hWnd) {
 }
 
 void BoardView::print() {
-	if (!automaticUpdateOfCells) {
-		automaticUpdateOfCells = true;
+	if (!automaticUpdateOfCellsGoingOn) {
+		automaticUpdateOfCellsGoingOn = true;
 		LPARAM cellValue = (LPARAM)models::Cell::CELL_NO_VALUE_CHARACTER;
 			for (unsigned int i = 0; i < models::Board::NUMBER_OF_ROWS; i++) {
 				for (unsigned int j = 0; j < models::Board::NUMBER_OF_COLUMNS; j++) {
@@ -48,13 +48,13 @@ void BoardView::print() {
 					SendMessage(handleBoard[(i * models::Board::NUMBER_OF_ROWS) + j],WM_SETTEXT,0, cellValue);
 				}
 			}
-		automaticUpdateOfCells = false;
+		automaticUpdateOfCellsGoingOn = false;
 	}
 }
 
 void BoardView::updateBoard() {
-	if (!automaticUpdateOfCells) {
-		automaticUpdateOfCells = true;
+	if (!automaticUpdateOfCellsGoingOn) {
+		automaticUpdateOfCellsGoingOn = true;
 		char cellCharacters[2];
 		unsigned int cellValue = models::Cell::CELL_NO_VALUE;
 		for (unsigned int i = 0; i < models::Board::NUMBER_OF_ROWS; i++) {
@@ -67,7 +67,7 @@ void BoardView::updateBoard() {
 				models::Game::instance()->setValue(i, j, cellValue);
 			}
 		}
-		automaticUpdateOfCells = false;
+		automaticUpdateOfCellsGoingOn = false;
 	}
 }
 

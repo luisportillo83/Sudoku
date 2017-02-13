@@ -8,7 +8,6 @@ namespace utils {
 
 class Message {
 public:
-
 	enum YesNoOptions {
 		YES = 0,
 		NO
