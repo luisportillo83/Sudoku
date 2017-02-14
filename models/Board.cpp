@@ -36,8 +36,8 @@ void Board::clearBoard() {
 }
 
 bool Board::canPutValue(unsigned int value, unsigned int row, unsigned int column) {
-	return (!isValueInColumn(value, column) &&
-			(!isValueinRow(value, row)));
+	return (!isValueInColumn(value, column) && (!isValueinRow(value, row)) &&
+			(cells[(row * Board::NUMBER_OF_COLUMNS) + column]->isChangeable()));
 }
 
 unsigned int Board::getValue(unsigned int row, unsigned int column) {

@@ -15,6 +15,7 @@ public:
 	bool isGameFinished();
 	bool isGameOnGoing();
 	void setValue(unsigned int row, unsigned int column, unsigned int value);
+	bool canPutValue(unsigned int value, unsigned int row, unsigned int column);
 	State::StateValues getState();
 	void setState(State::StateValues newState);
 	unsigned int getValue(unsigned int row, unsigned int column);

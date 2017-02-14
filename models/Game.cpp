@@ -57,6 +57,10 @@ void Game::setValue(unsigned int row, unsigned int column, unsigned int value) {
 	board->setValue(row, column, value);
 }
 
+bool Game::canPutValue(unsigned int value, unsigned int row, unsigned int column) {
+	return board->canPutValue(value, row, column);
+}
+
 void Game::clearBoard() {
 	board->clearBoard();
 }

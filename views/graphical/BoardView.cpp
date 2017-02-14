@@ -1,5 +1,7 @@
 #include "BoardView.h"
 
+#include <iostream>
+
 namespace views {
 
 BoardView * BoardView::boardView;
@@ -35,42 +37,54 @@ void BoardView::create(HWND hWnd) {
 	}
 }
 
-void BoardView::print() {
+void BoardView::printBoard() {
 	if (!automaticUpdateOfCellsGoingOn) {
 		automaticUpdateOfCellsGoingOn = true;
-		LPARAM cellValue = (LPARAM)models::Cell::CELL_NO_VALUE_CHARACTER;
-			for (unsigned int i = 0; i < models::Board::NUMBER_OF_ROWS; i++) {
-				for (unsigned int j = 0; j < models::Board::NUMBER_OF_COLUMNS; j++) {
-					cellValue = (LPARAM)models::Cell::CELL_NO_VALUE_CHARACTER;
-					if (models::Game::instance()->getValue(i, j) != models::Cell::CELL_NO_VALUE) {
-						cellValue = (LPARAM)std::to_string(models::Game::instance()->getValue(i, j)).c_str();
-					}
-					SendMessage(handleBoard[(i * models::Board::NUMBER_OF_ROWS) + j],WM_SETTEXT,0, cellValue);
-				}
+		for (unsigned int i = 0; i < models::Board::NUMBER_OF_ROWS; i++) {
+			for (unsigned int j = 0; j < models::Board::NUMBER_OF_COLUMNS; j++) {
+				printCell(i, j);
 			}
+		}
 		automaticUpdateOfCellsGoingOn = false;
 	}
+}
+
+void BoardView::printCell(unsigned int row, unsigned int column) {
+	LPARAM cellValue = (LPARAM)models::Cell::CELL_NO_VALUE_CHARACTER;
+	if (models::Game::instance()->getValue(row, column) != models::Cell::CELL_NO_VALUE) {
+		cellValue = (LPARAM)std::to_string(models::Game::instance()->getValue(row, column)).c_str();
+	}
+	SendMessage(handleBoard[(row * models::Board::NUMBER_OF_ROWS) + column],WM_SETTEXT,0, cellValue);
 }
 
 void BoardView::updateBoard() {
 	if (!automaticUpdateOfCellsGoingOn) {
 		automaticUpdateOfCellsGoingOn = true;
-		char cellCharacters[2];
 		unsigned int cellValue = models::Cell::CELL_NO_VALUE;
 		for (unsigned int i = 0; i < models::Board::NUMBER_OF_ROWS; i++) {
 			for (unsigned int j = 0; j < models::Board::NUMBER_OF_COLUMNS; j++) {
-				GetWindowText(handleBoard[(models::Board::NUMBER_OF_ROWS * i) + j], cellCharacters, 2);
-				cellValue = models::Cell::CELL_NO_VALUE;
-				if (strcmp(cellCharacters, models::Cell::CELL_NO_VALUE_CHARACTER)) {
-					cellValue = atoi(cellCharacters);
+				cellValue = getCellBoardValue(i, j);
+				if (models::Game::instance()->canPutValue(cellValue, i, j)) {
+					models::Game::instance()->setValue(i, j, cellValue);
 				}
-				// TODO, hacer un game-->canPutValue()
-				// Y si no se puede poner, poner el valor anterior
-				models::Game::instance()->setValue(i, j, cellValue);
+				else {
+					printCell(i, j);
+				}
 			}
 		}
 		automaticUpdateOfCellsGoingOn = false;
 	}
+}
+
+unsigned int BoardView::getCellBoardValue(unsigned int row, unsigned int column) {
+	unsigned int cellValue = models::Cell::CELL_NO_VALUE;
+	char cellCharacters[2];
+	GetWindowText(handleBoard[(models::Board::NUMBER_OF_ROWS * row) + column], cellCharacters, 2);
+	cellValue = models::Cell::CELL_NO_VALUE;
+	if (strcmp(cellCharacters, models::Cell::CELL_NO_VALUE_CHARACTER)) {
+		cellValue = atoi(cellCharacters);
+	}
+	return cellValue;
 }
 
 }

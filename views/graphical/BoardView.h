@@ -19,8 +19,10 @@ public:
 	static constexpr const unsigned int HANDLE_BOARD = 101;
 
 	void create(HWND hWnd);
-	void print();
+	void printBoard();
+	void printCell(unsigned int row, unsigned int column);
 	void updateBoard();
+	unsigned int getCellBoardValue(unsigned int row, unsigned int column);
 private:
 	BoardView();
 	static BoardView * boardView;

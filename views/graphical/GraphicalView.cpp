@@ -19,7 +19,7 @@ LRESULT CALLBACK MainWndProc(HWND hWnd, UINT Msg, WPARAM wParam, LPARAM lParam) 
 	switch(Msg)	{
 	case WM_CREATE:
 		views::BoardView::instance()->create(hWnd);
-		views::BoardView::instance()->print();
+		views::BoardView::instance()->printBoard();
 		CreateWindowExW(NULL,L"BUTTON",L"New", WS_TABSTOP|WS_CHILD|WS_VISIBLE|BS_PUSHBUTTON,
 			BoardView::LEFT_MARGIN, GraphicalView::BUTTON_VERTICAL, GraphicalView::BUTTON_WIDTH, GraphicalView::BUTTON_EIGHT,
 			hWnd, (HMENU)GraphicalView::HANDLE_NEW_GAME, GetModuleHandle(NULL), NULL);

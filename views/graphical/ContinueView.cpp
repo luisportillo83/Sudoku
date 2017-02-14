@@ -10,7 +10,7 @@ ContinueView::ContinueView() {
 void ContinueView::interact(controllers::ContinueController * continueController) {
 	if (utils::Message::YesNoOptions::YES == utils::Message::printYesNoMessage("¿Quieres continuar jugando?", ContinueView::WINDOW_NAME)) {
 		continueController->continuePlaying();
-		views::BoardView::instance()->print();
+		views::BoardView::instance()->printBoard();
 	}
 	else {
 		continueController->exit();

@@ -25,7 +25,7 @@ void NewView::interact(controllers::NewController * newController) {
 	}
 
 	newController->start(difficultyLevel);
-	views::BoardView::instance()->print();
+	views::BoardView::instance()->printBoard();
 }
 
 }

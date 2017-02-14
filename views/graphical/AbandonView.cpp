@@ -22,7 +22,7 @@ void AbandonView::interact(controllers::AbandonController * abandonController) {
 
 		if (utils::Message::YesNoOptions::YES == utils::Message::printYesNoMessage("¿Quieres abandonar la partida actual?", AbandonView::WINDOW_NAME)) {
 			abandonController->abandon();
-			views::BoardView::instance()->print();
+			views::BoardView::instance()->printBoard();
 		}
 		else {
 			abandonController->continueCurrentGame();

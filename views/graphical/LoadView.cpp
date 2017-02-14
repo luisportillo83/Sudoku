@@ -16,7 +16,7 @@ void LoadView::interact(controllers::LoadController * loadController) {
 	}
 	std::string fileName = getFileName();
 	loadController->load(fileName);
-	views::BoardView::instance()->print();
+	views::BoardView::instance()->printBoard();
 }
 
 std::string LoadView::getFileName() {

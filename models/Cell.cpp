@@ -14,6 +14,7 @@ Cell::Cell() {
 
 void Cell::setValue(unsigned int value) {
 	assert(value <= Cell::CELL_MAX_VALUE);
+	assert(changeable);
 	this->value = value;
 }
 
