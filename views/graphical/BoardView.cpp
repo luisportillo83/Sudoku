@@ -54,7 +54,7 @@ void BoardView::printCell(unsigned int row, unsigned int column) {
 	if (models::Game::instance()->getValue(row, column) != models::Cell::CELL_NO_VALUE) {
 		cellValue = (LPARAM)std::to_string(models::Game::instance()->getValue(row, column)).c_str();
 	}
-	SendMessage(handleBoard[(row * models::Board::NUMBER_OF_ROWS) + column],WM_SETTEXT,0, cellValue);
+	SendMessage(handleBoard[(row * models::Board::NUMBER_OF_ROWS) + column], WM_SETTEXT, 0, cellValue);
 }
 
 void BoardView::updateBoard() {

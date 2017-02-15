@@ -9,7 +9,6 @@ public:
 	void setValue(unsigned int value);
 	unsigned int getValue();
 	bool isChangeable();
-	// TODO improve these two methods
 	void makeChangeable();
 	void makeUnchangeable();
 
