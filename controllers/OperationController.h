@@ -1,13 +1,14 @@
 #ifndef CONTROLLERS_OPERATIONCONTROLLER_H_
 #define CONTROLLERS_OPERATIONCONTROLLER_H_
 
-#include "GameController.h"
+#include "../models/Game.h"
+#include "../models/State.h"
 
 namespace controllers {
 
 class OperationControllerVisitor;
 
-class OperationController: public GameController {
+class OperationController {
 public:
 	OperationController();
 	virtual ~OperationController() {};

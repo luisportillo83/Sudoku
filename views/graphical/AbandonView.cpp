@@ -28,6 +28,9 @@ void AbandonView::interact(controllers::AbandonController * abandonController) {
 			abandonController->continueCurrentGame();
 		}
 	}
+	else {
+		abandonController->continueCurrentGame();
+	}
 }
 
 std::string AbandonView::getFileName() {
